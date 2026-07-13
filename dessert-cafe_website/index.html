@@ -369,21 +369,21 @@
     </section>
 
     <!-- 3. Dessert Showcase Section (Interactive Filtering) -->
-    <section id="gallery" class="py-20 sm:py-28 md:py-36 bg-slate-100 dark:bg-charcoal-deep relative overflow-hidden border-t border-slate-300 dark:border-white/5">
+    <section id="gallery" class="py-20 sm:py-28 md:py-36 bg-slate-50 dark:bg-charcoal-deep relative overflow-hidden border-t border-slate-300 dark:border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-4 fade-in-element">
                 <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-gold">02 / Les Collections</span>
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-950 dark:text-white">시즌 한정 디저트 컬렉션</h2>
-                <p class="text-xs sm:text-sm text-slate-600 dark:text-gray-400 font-light max-w-md mx-auto">
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-gray-400 font-light max-w-2xl mx-auto">
                     매달 새롭게 큐레이션되는 디저트 미학. 감각적인 풍미를 눈과 입으로 모두 경험하세요.
                     <!-- Hidden Easter Egg (Sweet Jumper) -->
                     <span onclick="openSecretGame('jumper')" class="cursor-pointer inline-block ml-1 text-slate-400 dark:text-gray-500 hover:text-gold hover:scale-150 active:scale-95 transition-all duration-300 filter hover:drop-shadow-[0_0_6px_rgba(212,175,55,1)] text-xs animate-pulse" title="마카롱 장애물 뛰어넘기">🧁</span>
+                    <span class="block text-[10px] text-slate-400 dark:text-gray-500 tracking-widest mt-2 font-normal">(아틀리에 곳곳의 숨겨진 히든 버튼을 찾아 미니게임을 즐겨보세요)</span>
                 </p>
                 <div class="w-12 h-[1px] bg-gold/30 mx-auto mt-6"></div>
             </div>
 
-            <!-- Filter Tabs with enhanced borders -->
-            <div class="flex justify-center gap-2 sm:gap-4 mb-10 text-[10px] sm:text-xs tracking-widest uppercase font-semibold overflow-x-auto whitespace-nowrap pb-2 fade-in-element">
+            <!-- Filter Tabs -->
                 <button onclick="filterMenu('all')" class="menu-tab-btn active px-5 py-2 border border-gold text-gold bg-white dark:bg-transparent rounded-full transition-all duration-300 shadow-sm" id="tab-all">All</button>
                 <button onclick="filterMenu('signature')" class="menu-tab-btn px-5 py-2 border border-slate-300 dark:border-white/10 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white bg-white dark:bg-transparent rounded-full transition-all duration-300 shadow-sm" id="tab-signature">Signature</button>
                 <button onclick="filterMenu('seasonal')" class="menu-tab-btn px-5 py-2 border border-slate-300 dark:border-white/10 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white bg-white dark:bg-transparent rounded-full transition-all duration-300 shadow-sm" id="tab-seasonal">Seasonal Edition</button>
