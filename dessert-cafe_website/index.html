@@ -154,6 +154,10 @@
                     Cake Lab
                     <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gold transition-all duration-300 group-hover:w-full"></span>
                 </a>
+                <a href="#guestbook" class="text-slate-500 dark:text-gray-400 hover:text-gold transition-all duration-300 relative group py-1">
+                    Livre d'Or
+                    <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gold transition-all duration-300 group-hover:w-full"></span>
+                </a>
                 <a href="#location" class="text-slate-500 dark:text-gray-400 hover:text-gold transition-all duration-300 relative group py-1">
                     Visit
                     <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gold transition-all duration-300 group-hover:w-full"></span>
@@ -205,6 +209,7 @@
                 <a href="#about" class="mobile-nav-link text-slate-500 dark:text-gray-400 hover:text-gold transition-colors py-2">About</a>
                 <a href="#gallery" class="mobile-nav-link text-slate-500 dark:text-gray-400 hover:text-gold transition-colors py-2">Collection</a>
                 <a href="#customizer" class="mobile-nav-link text-slate-500 dark:text-gray-400 hover:text-gold transition-colors py-2">Cake Lab</a>
+                <a href="#guestbook" class="mobile-nav-link text-slate-500 dark:text-gray-400 hover:text-gold transition-colors py-2">Livre d'Or</a>
                 <a href="#location" class="mobile-nav-link text-slate-500 dark:text-gray-400 hover:text-gold transition-colors py-2">Visit</a>
             </nav>
 
@@ -562,8 +567,72 @@
         </div>
     </section>
 
-    <!-- 5. CTA & Location Section: 오시는 길 -->
-    <section id="location" class="py-20 sm:py-28 md:py-36 bg-slate-50 dark:bg-charcoal relative border-t border-slate-200/50 dark:border-white/5">
+    <!-- 5. Guestbook Section: 방명록 (Livre d'Or) -->
+    <section id="guestbook" class="py-20 sm:py-28 bg-slate-50 dark:bg-charcoal-deep relative overflow-hidden border-t border-slate-200/50 dark:border-white/5">
+        <div class="absolute inset-0 glow-overlay pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-4 fade-in-element">
+                <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-gold">04 / Livre d'Or</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-950 dark:text-white">디지털 살롱 & 방명록</h2>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-gray-400 font-light max-w-md mx-auto">아틀리에 드 시크를 다녀간 귀빈들의 따뜻한 기록과 취향의 공유 공간입니다.</p>
+                <div class="w-12 h-[1px] bg-gold/30 mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                <!-- Guestbook Form (Left Side) -->
+                <div class="lg:col-span-5 bg-white dark:bg-charcoal border border-slate-200/60 dark:border-white/5 p-6 sm:p-8 rounded-sm shadow-sm fade-in-element">
+                    <form id="guestbook-form" onsubmit="handleGuestbookSubmit(event)" class="space-y-6">
+                        <h3 class="text-base sm:text-lg font-bold text-slate-950 dark:text-white tracking-wider pb-3 border-b border-slate-100 dark:border-white/5">Write a Message</h3>
+                        
+                        <!-- Name Input -->
+                        <div class="space-y-2">
+                            <label for="visitor-name" class="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-gray-500 block">이름 / 닉네임</label>
+                            <input type="text" id="visitor-name" required maxlength="15" placeholder="성함 혹은 익명을 입력해주세요" class="w-full px-4 py-3 bg-slate-50 dark:bg-charcoal-deep border border-slate-200 dark:border-white/10 text-xs text-slate-950 dark:text-white rounded-sm focus:outline-none focus:border-gold transition-colors font-light">
+                        </div>
+
+                        <!-- Menu Pairing Select -->
+                        <div class="space-y-2">
+                            <label for="visitor-pairing" class="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-gray-500 block">오늘의 페어링 디저트</label>
+                            <select id="visitor-pairing" class="w-full px-4 py-3 bg-slate-50 dark:bg-charcoal-deep border border-slate-200 dark:border-white/10 text-xs text-slate-950 dark:text-white rounded-sm focus:outline-none focus:border-gold transition-colors font-light">
+                                <option value="쥬메트릭 블랑">쥬메트릭 블랑 (Geometric Blanc)</option>
+                                <option value="누아르 골드 스페어">누아르 골드 스페어 (Noir Gold Sphère)</option>
+                                <option value="트라이앵글 프레즈">트라이앵글 프레즈 (Triangle Fraise)</option>
+                                <option value="오더 메이드 큐브 케이크">시크 오더 메이드 케이크 (Lab Cake)</option>
+                                <option value="싱글 오리진 커피">싱글 오리진 필터 에스프레소</option>
+                            </select>
+                        </div>
+
+                        <!-- Message Input -->
+                        <div class="space-y-2">
+                            <label for="visitor-message" class="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-gray-500 block">메시지 (Message)</label>
+                            <textarea id="visitor-message" required maxlength="120" rows="3" placeholder="기분 좋은 발자취나 디저트 감상평을 한 줄 남겨주세요" class="w-full px-4 py-3 bg-slate-50 dark:bg-charcoal-deep border border-slate-200 dark:border-white/10 text-xs text-slate-950 dark:text-white rounded-sm focus:outline-none focus:border-gold transition-colors font-light resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 bg-slate-950 dark:bg-white text-white dark:text-charcoal-deep font-bold text-xs uppercase tracking-widest hover:bg-gold dark:hover:bg-gold dark:hover:text-charcoal-deep transition-all duration-300 rounded-sm">
+                            메시지 기록하기
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Guestbook List (Right Side) -->
+                <div class="lg:col-span-7 space-y-4 fade-in-element">
+                    <!-- Status Indicator & Counter -->
+                    <div class="flex justify-between items-center px-2">
+                        <span class="text-[10px] tracking-widest text-slate-400 dark:text-gray-500 uppercase font-bold">RECENT MEMORIES</span>
+                        <span class="text-[10px] text-gold font-bold tracking-wider" id="guestbook-counter">TOTAL: 0 NOTES</span>
+                    </div>
+
+                    <!-- Scrollable Container for Guestbook items -->
+                    <div class="space-y-4 max-h-[460px] overflow-y-auto pr-2" id="guestbook-list-container">
+                        <!-- Dynamic guestbook cards injected here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. CTA & Location Section: 오시는 길 -->
+    <section id="location" class="py-20 sm:py-28 md:py-36 bg-white dark:bg-charcoal relative border-t border-slate-200/50 dark:border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                 
@@ -614,7 +683,7 @@
                 <!-- Text Right side (Right) -->
                 <div class="lg:col-span-5 space-y-6 sm:space-y-8 order-1 lg:order-2 fade-in-element">
                     <div class="space-y-3">
-                        <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-gold">04 / Visit Us</span>
+                        <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-gold">05 / Visit Us</span>
                         <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-950 dark:text-white leading-tight">
                             당신의 고유한<br>미식을 위한 여정
                         </h2>
@@ -1076,12 +1145,166 @@
         document.getElementById('theme-toggle-mobile-quick').addEventListener('click', toggleTheme);
         document.getElementById('theme-toggle-mobile').addEventListener('click', toggleTheme);
 
+        // 9. Interactive Guestbook (Livre d'Or) Logic with localStorage
+        const defaultEntries = [
+            {
+                name: "민지안",
+                pairing: "쥬메트릭 블랑",
+                message: "미술관에 온 듯 고요하고 깊이 있는 인테리어가 정말 마음을 편안하게 해주네요. 쥬메트릭 블랑 무스가 사르르 녹아내리는 경험은 예술이었습니다.",
+                date: "2026.07.11",
+                likes: 8
+            },
+            {
+                name: "David K.",
+                pairing: "누아르 골드 스페어",
+                message: "Minimalist heaven. The visual symmetry of 'Noir Sphère' matches perfectly with the rich single-origin espresso. Truly chic experience.",
+                date: "2026.07.09",
+                likes: 12
+            },
+            {
+                name: "한소율",
+                pairing: "오더 메이드 큐브 케이크",
+                message: "아방가르드 가니쉬 큐브 케이크로 기념일을 보냈는데 잊지 못할 추억이 되었습니다. 오더 메이드 랩 시뮬레이션 그대로 실물 케이크가 나오다니 신기해요!",
+                date: "2026.07.05",
+                likes: 5
+            }
+        ];
+
+        // Load Guestbook Entries from LocalStorage or fallback to default entries
+        let guestbookEntries = [];
+
+        function initGuestbook() {
+            const stored = localStorage.getItem('chic_guestbook');
+            if (stored) {
+                try {
+                    guestbookEntries = JSON.parse(stored);
+                } catch (e) {
+                    guestbookEntries = [...defaultEntries];
+                }
+            } else {
+                guestbookEntries = [...defaultEntries];
+                localStorage.setItem('chic_guestbook', JSON.stringify(guestbookEntries));
+            }
+            renderGuestbook();
+        }
+
+        // Render guestbook cards dynamically
+        function renderGuestbook() {
+            const container = document.getElementById('guestbook-list-container');
+            const counter = document.getElementById('guestbook-counter');
+            
+            if (!container) return;
+
+            counter.textContent = `TOTAL: ${guestbookEntries.length} NOTES`;
+
+            if (guestbookEntries.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 bg-white dark:bg-charcoal border border-slate-200/50 dark:border-white/5 rounded-sm">
+                        <p class="text-xs text-slate-400 dark:text-gray-500 font-light">작성된 방명록이 없습니다. 첫 발자취를 남겨보세요.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = guestbookEntries.map((entry, index) => `
+                <div class="bg-white dark:bg-charcoal border border-slate-200/50 dark:border-white/5 p-5 flex flex-col justify-between relative rounded-sm shadow-sm hover:border-gold/30 dark:hover:border-gold/30 transition-all duration-300">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-xs font-bold text-slate-900 dark:text-white">${escapeHtml(entry.name)}</span>
+                                <span class="text-[9px] uppercase tracking-widest text-gold bg-gold/10 px-2 py-0.5 ml-2 rounded">${escapeHtml(entry.pairing)}</span>
+                            </div>
+                            <button onclick="deleteGuestbookEntry(${index})" class="text-slate-400 dark:text-gray-600 hover:text-red-500 dark:hover:text-red-400 p-1 text-xs transition-colors" title="삭제">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                        <p class="text-xs text-slate-600 dark:text-gray-400 font-light leading-relaxed whitespace-pre-line">${escapeHtml(entry.message)}</p>
+                    </div>
+                    
+                    <div class="flex justify-between items-center pt-4 mt-3 border-t border-slate-100 dark:border-white/5 text-[10px] text-slate-400 dark:text-gray-500">
+                        <span>${entry.date || '2026.07.13'}</span>
+                        <button onclick="likeGuestbookEntry(${index})" class="flex items-center gap-1.5 hover:text-rose-500 transition-colors py-1 px-2 hover:bg-rose-500/5 rounded">
+                            <i class="fa-regular fa-heart text-rose-500"></i>
+                            <span class="font-bold text-rose-500/90">${entry.likes || 0}</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Handle submission of the guestbook message
+        function handleGuestbookSubmit(event) {
+            event.preventDefault();
+            
+            const nameInput = document.getElementById('visitor-name');
+            const pairingSelect = document.getElementById('visitor-pairing');
+            const messageInput = document.getElementById('visitor-message');
+
+            if (!nameInput.value.trim() || !messageInput.value.trim()) {
+                showToast("✦ 이름과 메시지를 정상적으로 채워주세요.");
+                return;
+            }
+
+            const today = new Date();
+            const formattedDate = `${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, '0')}.${String(today.getDate()).padStart(2, '0')}`;
+
+            const newEntry = {
+                name: nameInput.value.trim(),
+                pairing: pairingSelect.value,
+                message: messageInput.value.trim(),
+                date: formattedDate,
+                likes: 0
+            };
+
+            // Insert new entry to the top of the array
+            guestbookEntries.unshift(newEntry);
+            localStorage.setItem('chic_guestbook', JSON.stringify(guestbookEntries));
+            
+            renderGuestbook();
+            showToast("✦ 방명록에 발자취가 세련되게 새겨졌습니다.");
+
+            // Reset inputs
+            nameInput.value = '';
+            messageInput.value = '';
+        }
+
+        // Like/Heart a guestbook entry
+        function likeGuestbookEntry(index) {
+            guestbookEntries[index].likes = (guestbookEntries[index].likes || 0) + 1;
+            localStorage.setItem('chic_guestbook', JSON.stringify(guestbookEntries));
+            renderGuestbook();
+            showToast("✦ 감상평에 공감의 깊이를 더했습니다.");
+        }
+
+        // Delete a guestbook entry
+        function deleteGuestbookEntry(index) {
+            guestbookEntries.splice(index, 1);
+            localStorage.setItem('chic_guestbook', JSON.stringify(guestbookEntries));
+            renderGuestbook();
+            showToast("✦ 방명록 메시지가 안전하게 정돈되었습니다.");
+        }
+
+        // Helper to prevent HTML Injection
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
+
         // Init theme state on page load
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme') || 'dark';
             document.documentElement.className = savedTheme;
             updateThemeToggleUI(savedTheme);
             redrawCakeVisualizer();
+            
+            // Initialize visitor guestbook
+            initGuestbook();
         });
     </script>
 </body>
