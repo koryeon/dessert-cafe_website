@@ -258,8 +258,11 @@
         </div>
 
         <div class="relative z-10 text-center px-4 sm:px-6 md:px-8 max-w-4xl mx-auto my-auto py-12">
-            <!-- Category Tag -->
-            <p class="text-[9px] sm:text-xs uppercase tracking-[0.5em] text-gold mb-6 font-semibold animate-pulse">Atelier de Dessert Premium</p>
+            <!-- Category Tag with Hidden Easter Egg Star -->
+            <p class="text-[9px] sm:text-xs uppercase tracking-[0.5em] text-gold mb-6 font-semibold select-none flex items-center justify-center gap-1">
+                <span>Atelier de Dessert Premium</span>
+                <span onclick="openSecretGame()" class="cursor-pointer inline-block ml-1 text-gold hover:text-gold-light hover:scale-150 active:scale-95 transition-all duration-300 filter drop-shadow-[0_0_6px_rgba(212,175,55,0.7)] hover:drop-shadow-[0_0_12px_rgba(212,175,55,1)] animate-bounce text-xs" title="아틀리에 시크릿 랩 입장" id="secret-star">✦</span>
+            </p>
             
             <!-- Catchphrase -->
             <h1 class="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tight text-slate-950 dark:text-white mb-6 sm:mb-8 leading-[1.15] sm:leading-tight">
@@ -799,6 +802,67 @@
     <!-- Live Toast Notification Container -->
     <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
+    <!-- Secret Minigame Modal -->
+    <div id="secret-game-modal" class="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white dark:bg-charcoal border border-slate-200 dark:border-gold/30 p-6 sm:p-8 max-w-lg w-full mx-4 text-center space-y-6 relative rounded-sm shadow-[0_0_50px_rgba(212,175,55,0.12)]">
+            <!-- Close Button -->
+            <button onclick="closeSecretGame()" class="absolute top-4 right-4 text-slate-400 dark:text-gray-500 hover:text-slate-950 dark:hover:text-white transition-colors" aria-label="게임 닫기">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+
+            <div class="space-y-1">
+                <span class="text-[9px] font-bold uppercase tracking-[0.4em] text-gold animate-pulse">SECRET LABORATORY</span>
+                <h3 class="text-lg sm:text-xl font-bold text-slate-950 dark:text-white tracking-wide">골드 포일 캐처 (Gold Foil Catcher)</h3>
+                <p class="text-[11px] text-slate-500 dark:text-gray-400 font-light">하늘에서 떨어지는 황금박(✦)과 라즈베리(🍓)를 골드 접시에 가득 담아보세요!</p>
+            </div>
+
+            <!-- Game Info Panel -->
+            <div class="flex justify-between items-center px-4 py-2.5 bg-slate-50 dark:bg-charcoal-deep border border-slate-200 dark:border-white/5 rounded-sm text-xs font-mono">
+                <div class="text-slate-600 dark:text-gray-400">SCORE: <span id="game-score" class="text-gold font-bold">0</span> / 100</div>
+                <div class="text-slate-600 dark:text-gray-400">LIVES: <span id="game-lives" class="text-rose-500 font-bold">❤❤❤</span></div>
+            </div>
+
+            <!-- Game Area Frame -->
+            <div class="relative w-full aspect-[4/3] bg-slate-100 dark:bg-charcoal-deep border border-slate-200 dark:border-gold/10 rounded-sm overflow-hidden" id="canvas-container">
+                <canvas id="game-canvas" class="w-full h-full block"></canvas>
+                
+                <!-- Play / Game Over Screen Overlay -->
+                <div id="game-overlay" class="absolute inset-0 bg-slate-50/95 dark:bg-charcoal-deep/95 flex flex-col items-center justify-center space-y-4 p-4">
+                    <div id="overlay-title" class="text-base sm:text-lg font-bold text-slate-950 dark:text-white">CHIC SECRET ATELIER LAB</div>
+                    <p id="overlay-desc" class="text-[11px] text-slate-500 dark:text-gray-400 max-w-xs text-center font-light leading-relaxed">
+                        키보드 방향키(←, →) 또는 모바일 하단 버튼으로 접시를 움직이세요. 오염물질인 탄 재(🌑)를 받으면 실패합니다!
+                    </p>
+                    <button onclick="startGame()" class="px-6 py-3 bg-slate-950 dark:bg-gold text-white dark:text-charcoal-deep font-bold text-[10px] sm:text-xs uppercase tracking-widest hover:bg-gold dark:hover:bg-gold-light transition-all rounded-sm shadow-xl shadow-gold/10">
+                        START GAME
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Touch Control Panel -->
+            <div class="flex gap-4 justify-between items-center sm:hidden">
+                <button id="btn-left" class="flex-1 py-3.5 bg-slate-100 dark:bg-white/5 active:bg-gold/20 border border-slate-200 dark:border-white/10 text-slate-950 dark:text-white rounded-sm text-center select-none text-sm transition-colors">◀ LEFT</button>
+                <button id="btn-right" class="flex-1 py-3.5 bg-slate-100 dark:bg-white/5 active:bg-gold/20 border border-slate-200 dark:border-white/10 text-slate-950 dark:text-white rounded-sm text-center select-none text-sm transition-colors">RIGHT ▶</button>
+            </div>
+
+            <!-- Reward Screen -->
+            <div id="reward-screen" class="hidden absolute inset-0 bg-white dark:bg-charcoal flex flex-col items-center justify-center space-y-5 p-6 z-10">
+                <div class="w-14 h-14 rounded-full border border-gold/40 flex items-center justify-center text-2xl text-gold animate-bounce">🏆</div>
+                <h4 class="text-base font-bold text-slate-950 dark:text-white tracking-widest uppercase">Secret Reward Unlocked!</h4>
+                <p class="text-[11px] text-slate-500 dark:text-gray-400 text-center font-light leading-relaxed max-w-xs">
+                    100점 달성을 축하드립니다! 최고의 취향과 손길을 증명하셨습니다. 매장 방문 시 아래 코드를 파티시에에게 제시해 주시면 <strong class="text-gold">시크 프리미엄 웰컴 마카롱 1구</strong>를 선물해 드립니다.
+                </p>
+                <div class="px-5 py-2.5 border border-dashed border-gold text-gold font-mono text-xs tracking-wider bg-gold/5 rounded-sm select-all">
+                    CHIC_GOLDEN_100
+                </div>
+                <button onclick="closeSecretGame()" class="px-6 py-3 bg-slate-950 dark:bg-white text-white dark:text-charcoal-deep font-bold text-[10px] tracking-widest uppercase hover:bg-gold transition-colors rounded-sm">
+                    돌아가기
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-slate-100 dark:bg-charcoal-deep border-t border-slate-200 dark:border-white/5 py-16 text-center text-xs text-slate-400 dark:text-gray-600">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 space-y-6">
@@ -1296,8 +1360,226 @@
             return text.replace(/[&<>"']/g, function(m) { return map[m]; });
         }
 
-        // Init theme state on page load
-        window.addEventListener('DOMContentLoaded', () => {
+        // 10. Hidden Minigame Engine Implementation
+        let canvas, ctx;
+        let score = 0;
+        let lives = 3;
+        let isPlaying = false;
+        let basket = { x: 0, width: 85, height: 8, speed: 8 };
+        let fallingItems = [];
+        let keys = {};
+        let animationId;
+
+        function openSecretGame() {
+            document.getElementById('secret-game-modal').classList.remove('opacity-0', 'pointer-events-none');
+            initCanvas();
+            showToast("✦ 숨겨진 아틀리에 연구소에 오신 것을 환영합니다! 미니게임에 도전하세요.");
+        }
+
+        function closeSecretGame() {
+            document.getElementById('secret-game-modal').classList.add('opacity-0', 'pointer-events-none');
+            stopGame();
+        }
+
+        function initCanvas() {
+            canvas = document.getElementById('game-canvas');
+            ctx = canvas.getContext('2d');
+            resizeCanvas();
+            basket.x = (canvas.width - basket.width) / 2;
+            drawInitialState();
+        }
+
+        function resizeCanvas() {
+            const container = document.getElementById('canvas-container');
+            if (canvas && container) {
+                canvas.width = container.clientWidth;
+                canvas.height = container.clientHeight;
+            }
+        }
+
+        function drawInitialState() {
+            if (!ctx || !canvas) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Draw minimalist golden plate
+            ctx.fillStyle = '#D4AF37';
+            ctx.beginPath();
+            if (ctx.roundRect) {
+                ctx.roundRect(basket.x, canvas.height - 20, basket.width, basket.height, 4);
+            } else {
+                ctx.rect(basket.x, canvas.height - 20, basket.width, basket.height);
+            }
+            ctx.fill();
+        }
+
+        function startGame() {
+            document.getElementById('game-overlay').classList.add('hidden');
+            document.getElementById('reward-screen').classList.add('hidden');
+            score = 0;
+            lives = 3;
+            fallingItems = [];
+            isPlaying = true;
+            updateGameUI();
+            initCanvas();
+            
+            if (animationId) cancelAnimationFrame(animationId);
+            gameLoop();
+        }
+
+        function stopGame() {
+            isPlaying = false;
+            if (animationId) cancelAnimationFrame(animationId);
+            document.getElementById('game-overlay').classList.remove('hidden');
+        }
+
+        function updateGameUI() {
+            document.getElementById('game-score').textContent = score;
+            document.getElementById('game-lives').textContent = "❤".repeat(lives) + "🖤".repeat(3 - lives);
+        }
+
+        function spawnFallingItem() {
+            if (!canvas) return;
+            // Spawn probability throttle
+            if (fallingItems.length < 5 && Math.random() < 0.035) {
+                const isDark = document.documentElement.classList.contains('dark');
+                const types = [
+                    { char: '✦', color: '#D4AF37', points: 10, isBad: false }, // Gold Foil
+                    { char: '🍓', color: '#E11D48', points: 15, isBad: false }, // Berry
+                    { char: '🍃', color: '#16A34A', points: 5, isBad: false },  // Matcha
+                    { char: '🌑', color: isDark ? '#9CA3AF' : '#1F2937', points: 0, isBad: true } // Charcoal dust
+                ];
+                const selectedType = types[Math.floor(Math.random() * types.length)];
+                fallingItems.push({
+                    x: Math.random() * (canvas.width - 30) + 15,
+                    y: -20,
+                    speed: Math.random() * 2.2 + 2.5,
+                    ...selectedType
+                });
+            }
+        }
+
+        function gameLoop() {
+            if (!isPlaying || !ctx || !canvas) return;
+
+            // Handle Plate Left/Right controls (incorporating desktop keyboard inputs)
+            if (keys['ArrowLeft'] || keys['Left']) {
+                basket.x = Math.max(0, basket.x - basket.speed);
+            }
+            if (keys['ArrowRight'] || keys['Right']) {
+                basket.x = Math.min(canvas.width - basket.width, basket.x + basket.speed);
+            }
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw Minimalist Golden Plate
+            ctx.fillStyle = '#D4AF37';
+            ctx.beginPath();
+            if (ctx.roundRect) {
+                ctx.roundRect(basket.x, canvas.height - 20, basket.width, basket.height, 3);
+            } else {
+                ctx.rect(basket.x, canvas.height - 20, basket.width, basket.height);
+            }
+            ctx.fill();
+
+            spawnFallingItem();
+
+            // Render and calculate item positions
+            for (let i = fallingItems.length - 1; i >= 0; i--) {
+                const item = fallingItems[i];
+                item.y += item.speed;
+
+                // Draw falling element
+                ctx.fillStyle = item.color;
+                ctx.font = '16px "Montserrat", sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(item.char, item.x, item.y);
+
+                // Collision Detection with plate boundary
+                const plateTopY = canvas.height - 20;
+                if (item.y >= plateTopY - 6 && item.y <= plateTopY + basket.height + 4) {
+                    if (item.x >= basket.x - 4 && item.x <= basket.x + basket.width + 4) {
+                        // Collision occurred
+                        if (item.isBad) {
+                            lives--;
+                            showToast("🌑 오염된 탄 재를 받았습니다! 생명이 차감됩니다.");
+                        } else {
+                            score += item.points;
+                        }
+                        
+                        updateGameUI();
+                        fallingItems.splice(i, 1);
+
+                        if (lives <= 0) {
+                            handleGameOver();
+                            return;
+                        }
+
+                        if (score >= 100) {
+                            handleGameWin();
+                            return;
+                        }
+                        continue;
+                    }
+                }
+
+                // Remove out of screen elements
+                if (item.y > canvas.height) {
+                    fallingItems.splice(i, 1);
+                }
+            }
+
+            animationId = requestAnimationFrame(gameLoop);
+        }
+
+        function handleGameOver() {
+            isPlaying = false;
+            document.getElementById('game-overlay').classList.remove('hidden');
+            document.getElementById('overlay-title').textContent = "GAME OVER";
+            document.getElementById('overlay-desc').textContent = `최종 점수: ${score}점. 명예 파티시에 등극에 아쉽게 실패했습니다. 포기하지 마세요!`;
+            document.getElementById('game-start-btn').textContent = "RETRY";
+        }
+
+        function handleGameWin() {
+            isPlaying = false;
+            document.getElementById('reward-screen').classList.remove('hidden');
+            showToast("🏆 완벽한 레시피 캐칭 성공! 100점 보너스가 해제되었습니다.");
+        }
+
+        // Attach Keyboard Bindings
+        window.addEventListener('keydown', e => {
+            if (['ArrowLeft', 'ArrowRight', ' '].includes(e.key)) {
+                e.preventDefault();
+            }
+            keys[e.key] = true;
+        });
+        window.addEventListener('keyup', e => {
+            keys[e.key] = false;
+        });
+
+        // Initialize Mobile Touch Controller Events
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnLeft = document.getElementById('btn-left');
+            const btnRight = document.getElementById('btn-right');
+
+            if (btnLeft && btnRight) {
+                // Left Button
+                btnLeft.addEventListener('touchstart', e => { e.preventDefault(); keys['ArrowLeft'] = true; });
+                btnLeft.addEventListener('touchend', () => { keys['ArrowLeft'] = false; });
+                btnLeft.addEventListener('mousedown', () => { keys['ArrowLeft'] = true; });
+                btnLeft.addEventListener('mouseup', () => { keys['ArrowLeft'] = false; });
+                
+                // Right Button
+                btnRight.addEventListener('touchstart', e => { e.preventDefault(); keys['ArrowRight'] = true; });
+                btnRight.addEventListener('touchend', () => { keys['ArrowRight'] = false; });
+                btnRight.addEventListener('mousedown', () => { keys['ArrowRight'] = true; });
+                btnRight.addEventListener('mouseup', () => { keys['ArrowRight'] = false; });
+            }
+
+            // Sync with Window resize for game area
+            window.addEventListener('resize', () => {
+                if (isPlaying) resizeCanvas();
+            });
+
+            // Init theme state on page load
             const savedTheme = localStorage.getItem('theme') || 'dark';
             document.documentElement.className = savedTheme;
             updateThemeToggleUI(savedTheme);
