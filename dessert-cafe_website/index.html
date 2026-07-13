@@ -258,10 +258,10 @@
         </div>
 
         <div class="relative z-10 text-center px-4 sm:px-6 md:px-8 max-w-4xl mx-auto my-auto py-12">
-            <!-- Category Tag with Hidden Easter Egg Star -->
+            <!-- Category Tag with Hidden Easter Egg Star (Foil Catcher) -->
             <p class="text-[9px] sm:text-xs uppercase tracking-[0.5em] text-gold mb-6 font-semibold select-none flex items-center justify-center gap-1">
                 <span>Atelier de Dessert Premium</span>
-                <span onclick="openSecretGame()" class="cursor-pointer inline-block ml-1 text-gold hover:text-gold-light hover:scale-150 active:scale-95 transition-all duration-300 filter drop-shadow-[0_0_6px_rgba(212,175,55,0.7)] hover:drop-shadow-[0_0_12px_rgba(212,175,55,1)] animate-bounce text-xs" title="아틀리에 시크릿 랩 입장" id="secret-star">✦</span>
+                <span onclick="openSecretGame('catcher')" class="cursor-pointer inline-block ml-1 text-gold hover:text-gold-light hover:scale-150 active:scale-95 transition-all duration-300 filter drop-shadow-[0_0_6px_rgba(212,175,55,0.7)] hover:drop-shadow-[0_0_12px_rgba(212,175,55,1)] animate-bounce text-xs" title="아틀리에 시크릿 골드 랩 입장" id="secret-star">✦</span>
             </p>
             
             <!-- Catchphrase -->
@@ -373,7 +373,11 @@
             <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-4 fade-in-element">
                 <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-gold">02 / Les Collections</span>
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-950 dark:text-white">시즌 한정 디저트 컬렉션</h2>
-                <p class="text-xs sm:text-sm text-slate-600 dark:text-gray-400 font-light max-w-md mx-auto">매달 새롭게 큐레이션되는 디저트 미학. 감각적인 풍미를 눈과 입으로 모두 경험하세요.</p>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-gray-400 font-light max-w-md mx-auto">
+                    매달 새롭게 큐레이션되는 디저트 미학. 감각적인 풍미를 눈과 입으로 모두 경험하세요.
+                    <!-- Hidden Easter Egg (Sweet Jumper) -->
+                    <span onclick="openSecretGame('jumper')" class="cursor-pointer inline-block ml-1 text-slate-400 dark:text-gray-500 hover:text-gold hover:scale-150 active:scale-95 transition-all duration-300 filter hover:drop-shadow-[0_0_6px_rgba(212,175,55,1)] text-xs animate-pulse" title="마카롱 장애물 뛰어넘기">🧁</span>
+                </p>
                 <div class="w-12 h-[1px] bg-gold/30 mx-auto mt-6"></div>
             </div>
 
@@ -539,20 +543,15 @@
                             <ellipse cx="100" cy="150" rx="60" ry="15" class="fill-slate-200/50 dark:fill-[#161B25] stroke-slate-300 dark:stroke-[#374151]" stroke-width="0.7" opacity="0.4"/>
                             
                             <!-- MAIN CAKE BODY (Sleek Isometric Style) -->
-                            <!-- Dynamic Group changes depending on selections -->
                             <g id="cake-body-render">
                                 <!-- Default is CUBE - Blanc -->
-                                <!-- Cube Top -->
                                 <polygon points="100,70 145,90 100,110 55,90" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1" id="cake-svg-top"/>
-                                <!-- Cube Left -->
                                 <polygon points="55,90 100,110 100,150 55,130" fill="#E2E8F0" stroke="#CCCCCC" stroke-width="1" id="cake-svg-left"/>
-                                <!-- Cube Right -->
                                 <polygon points="100,110 145,90 145,130 100,150" fill="#CBD5E1" stroke="#CCCCCC" stroke-width="1" id="cake-svg-right"/>
                             </g>
 
                             <!-- GARNISH OVERLAY -->
                             <g id="cake-garnish-render">
-                                <!-- Default Gold Line Foil Garnish on Cube -->
                                 <path d="M100,85 L125,95 M100,110 L100,140 M70,115 L100,128" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" id="garnish-svg-main"/>
                                 <circle cx="100" cy="85" r="3" fill="#D4AF37" id="garnish-svg-dots-1"/>
                                 <circle cx="120" cy="115" r="2" fill="#D4AF37" id="garnish-svg-dots-2"/>
@@ -582,7 +581,7 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-                <!-- Guestbook Form (Left Side) -->
+                <!-- Guestbook Form -->
                 <div class="lg:col-span-5 bg-white dark:bg-charcoal border border-slate-200/60 dark:border-white/5 p-6 sm:p-8 rounded-sm shadow-sm fade-in-element">
                     <form id="guestbook-form" onsubmit="handleGuestbookSubmit(event)" class="space-y-6">
                         <h3 class="text-base sm:text-lg font-bold text-slate-950 dark:text-white tracking-wider pb-3 border-b border-slate-100 dark:border-white/5">Write a Message</h3>
@@ -617,18 +616,15 @@
                     </form>
                 </div>
 
-                <!-- Guestbook List (Right Side) -->
+                <!-- Guestbook List -->
                 <div class="lg:col-span-7 space-y-4 fade-in-element">
-                    <!-- Status Indicator & Counter -->
                     <div class="flex justify-between items-center px-2">
                         <span class="text-[10px] tracking-widest text-slate-400 dark:text-gray-500 uppercase font-bold">RECENT MEMORIES</span>
                         <span class="text-[10px] text-gold font-bold tracking-wider" id="guestbook-counter">TOTAL: 0 NOTES</span>
                     </div>
 
-                    <!-- Scrollable Container for Guestbook items -->
-                    <div class="space-y-4 max-h-[460px] overflow-y-auto pr-2" id="guestbook-list-container">
-                        <!-- Dynamic guestbook cards injected here -->
-                    </div>
+                    <!-- Scrollable Container -->
+                    <div class="space-y-4 max-h-[460px] overflow-y-auto pr-2" id="guestbook-list-container"></div>
                 </div>
             </div>
         </div>
@@ -639,7 +635,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                 
-                <!-- Map / Action area (Left) -->
+                <!-- Map / Action area -->
                 <div class="lg:col-span-7 space-y-4 order-2 lg:order-1 fade-in-element">
                     <div class="relative w-full aspect-video bg-white dark:bg-charcoal-deep border border-slate-200 dark:border-white/5 rounded-sm overflow-hidden group shadow-2xl">
                         <!-- 가상의 지도 및 위치 안내용 SVG 인포그래픽 -->
@@ -651,7 +647,7 @@
                             <line x1="200" y1="0" x2="200" y2="400" class="stroke-slate-300 dark:stroke-[#1F2937]" stroke-width="8"/>
                             <line x1="450" y1="0" x2="450" y2="400" class="stroke-slate-300 dark:stroke-[#1F2937]" stroke-width="8"/>
                             
-                            <!-- 서브 스트리트 얇은 선 -->
+                            <!-- 서브 스트리트 -->
                             <line x1="0" y1="210" x2="600" y2="210" class="stroke-slate-200 dark:stroke-[#161B25]" stroke-width="2"/>
                             <line x1="320" y1="0" x2="320" y2="400" class="stroke-slate-200 dark:stroke-[#161B25]" stroke-width="2"/>
 
@@ -661,7 +657,6 @@
 
                             <!-- 매장 위치 하이라이트 핀 -->
                             <g transform="translate(320, 140)" class="cursor-pointer">
-                                <!-- 반사 효과 원형 파동 -->
                                 <circle cx="0" cy="0" r="16" fill="rgba(212, 175, 55, 0.15)">
                                     <animate attributeName="r" values="8;24;8" dur="3s" repeatCount="indefinite" />
                                 </circle>
@@ -683,7 +678,7 @@
                     </div>
                 </div>
 
-                <!-- Text Right side (Right) -->
+                <!-- Text Right side -->
                 <div class="lg:col-span-5 space-y-6 sm:space-y-8 order-1 lg:order-2 fade-in-element">
                     <div class="space-y-3">
                         <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-gold">05 / Visit Us</span>
@@ -698,7 +693,6 @@
 
                     <!-- Route Guide Tabs -->
                     <div class="border-t border-slate-200 dark:border-white/10 pt-6 space-y-4">
-                        <!-- Tabs Header -->
                         <div class="flex gap-4 border-b border-slate-200 dark:border-white/5 pb-2">
                             <button onclick="switchRouteTab('subway')" class="route-tab active text-xs font-bold text-gold tracking-wider pb-1 relative" id="route-tab-subway">
                                 대중교통 이용시
@@ -712,13 +706,11 @@
 
                         <!-- Tab Contents -->
                         <div class="text-[11px] sm:text-xs text-slate-500 dark:text-gray-400 space-y-3" id="route-desc-container">
-                            <!-- Subway (Default) -->
                             <div id="route-subway-content">
                                 <p class="leading-relaxed">
                                     <strong class="text-slate-900 dark:text-white font-semibold">지하철 2호선 뚝섬역 5번 출구</strong>에서 나온 뒤, 우측 골목을 따라 약 250m 직진하세요. CHIC 그레이 빌딩 1층에 자리 잡고 있어 도보 약 3분 거리에 있습니다.
                                 </p>
                             </div>
-                            <!-- Car (Hidden) -->
                             <div id="route-car-content" class="hidden">
                                 <p class="leading-relaxed">
                                     성수동 CHIC 빌딩 지하 전용 주차장을 이용해 주세요. 구매 고객에 한하여 <strong class="text-slate-900 dark:text-white font-semibold">무료 주차 2시간</strong>을 제공해 드립니다. 주차 공간이 협소할 경우 발렛 파킹 서비스도 지원됩니다.
@@ -814,13 +806,23 @@
 
             <div class="space-y-1">
                 <span class="text-[9px] font-bold uppercase tracking-[0.4em] text-gold animate-pulse">SECRET LABORATORY</span>
-                <h3 class="text-lg sm:text-xl font-bold text-slate-950 dark:text-white tracking-wide">골드 포일 캐처 (Gold Foil Catcher)</h3>
-                <p class="text-[11px] text-slate-500 dark:text-gray-400 font-light">하늘에서 떨어지는 황금박(✦)과 라즈베리(🍓)를 골드 접시에 가득 담아보세요!</p>
+                <h3 class="text-lg sm:text-xl font-bold text-slate-950 dark:text-white tracking-wide" id="game-modal-title">골드 포일 캐처 (Gold Foil Catcher)</h3>
+                <p class="text-[11px] text-slate-500 dark:text-gray-400 font-light" id="game-modal-desc">하늘에서 떨어지는 황금박(✦)과 라즈베리(🍓)를 골드 접시에 가득 담아보세요!</p>
+            </div>
+
+            <!-- Game Mode Status Display (No switcher tabs anymore, enters directly via separate hidden buttons) -->
+            <div class="flex justify-center gap-3 border-b border-slate-100 dark:border-white/5 pb-3 text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+                <span id="mode-badge-catcher" class="game-mode-btn pb-1 px-2 border-b-2 transition-all">
+                    Foil Catcher ✦
+                </span>
+                <span id="mode-badge-jumper" class="game-mode-btn pb-1 px-2 border-b-2 transition-all">
+                    Sweet Jumper 🧁
+                </span>
             </div>
 
             <!-- Game Info Panel -->
             <div class="flex justify-between items-center px-4 py-2.5 bg-slate-50 dark:bg-charcoal-deep border border-slate-200 dark:border-white/5 rounded-sm text-xs font-mono">
-                <div class="text-slate-600 dark:text-gray-400">SCORE: <span id="game-score" class="text-gold font-bold">0</span> / 100</div>
+                <div class="text-slate-600 dark:text-gray-400">SCORE: <span id="game-score" class="text-gold font-bold">0</span> <span id="score-target">/ 100</span></div>
                 <div class="text-slate-600 dark:text-gray-400">LIVES: <span id="game-lives" class="text-rose-500 font-bold">❤❤❤</span></div>
             </div>
 
@@ -834,16 +836,15 @@
                     <p id="overlay-desc" class="text-[11px] text-slate-500 dark:text-gray-400 max-w-xs text-center font-light leading-relaxed">
                         키보드 방향키(←, →) 또는 모바일 하단 버튼으로 접시를 움직이세요. 오염물질인 탄 재(🌑)를 받으면 실패합니다!
                     </p>
-                    <button onclick="startGame()" class="px-6 py-3 bg-slate-950 dark:bg-gold text-white dark:text-charcoal-deep font-bold text-[10px] sm:text-xs uppercase tracking-widest hover:bg-gold dark:hover:bg-gold-light transition-all rounded-sm shadow-xl shadow-gold/10">
+                    <button onclick="startGame()" id="game-start-btn" class="px-6 py-3 bg-slate-950 dark:bg-gold text-white dark:text-charcoal-deep font-bold text-[10px] sm:text-xs uppercase tracking-widest hover:bg-gold dark:hover:bg-gold-light transition-all rounded-sm shadow-xl shadow-gold/10">
                         START GAME
                     </button>
                 </div>
             </div>
 
             <!-- Mobile Touch Control Panel -->
-            <div class="flex gap-4 justify-between items-center sm:hidden">
-                <button id="btn-left" class="flex-1 py-3.5 bg-slate-100 dark:bg-white/5 active:bg-gold/20 border border-slate-200 dark:border-white/10 text-slate-950 dark:text-white rounded-sm text-center select-none text-sm transition-colors">◀ LEFT</button>
-                <button id="btn-right" class="flex-1 py-3.5 bg-slate-100 dark:bg-white/5 active:bg-gold/20 border border-slate-200 dark:border-white/10 text-slate-950 dark:text-white rounded-sm text-center select-none text-sm transition-colors">RIGHT ▶</button>
+            <div id="mobile-control-panel" class="flex gap-4 justify-between items-center sm:hidden">
+                <!-- Swapped dynamic button layout rendered here by JS -->
             </div>
 
             <!-- Reward Screen -->
@@ -851,7 +852,7 @@
                 <div class="w-14 h-14 rounded-full border border-gold/40 flex items-center justify-center text-2xl text-gold animate-bounce">🏆</div>
                 <h4 class="text-base font-bold text-slate-950 dark:text-white tracking-widest uppercase">Secret Reward Unlocked!</h4>
                 <p class="text-[11px] text-slate-500 dark:text-gray-400 text-center font-light leading-relaxed max-w-xs">
-                    100점 달성을 축하드립니다! 최고의 취향과 손길을 증명하셨습니다. 매장 방문 시 아래 코드를 파티시에에게 제시해 주시면 <strong class="text-gold">시크 프리미엄 웰컴 마카롱 1구</strong>를 선물해 드립니다.
+                    달성을 축하드립니다! 최고의 취향과 손길을 증명하셨습니다. 매장 방문 시 아래 코드를 파티시에에게 제시해 주시면 <strong class="text-gold">시크 프리미엄 웰컴 마카롱 1구</strong>를 선물해 드립니다.
                 </p>
                 <div class="px-5 py-2.5 border border-dashed border-gold text-gold font-mono text-xs tracking-wider bg-gold/5 rounded-sm select-all">
                     CHIC_GOLDEN_100
@@ -1234,7 +1235,6 @@
             }
         ];
 
-        // Load Guestbook Entries from LocalStorage or fallback to default entries
         let guestbookEntries = [];
 
         function initGuestbook() {
@@ -1252,7 +1252,6 @@
             renderGuestbook();
         }
 
-        // Render guestbook cards dynamically
         function renderGuestbook() {
             const container = document.getElementById('guestbook-list-container');
             const counter = document.getElementById('guestbook-counter');
@@ -1296,7 +1295,6 @@
             `).join('');
         }
 
-        // Handle submission of the guestbook message
         function handleGuestbookSubmit(event) {
             event.preventDefault();
             
@@ -1320,19 +1318,16 @@
                 likes: 0
             };
 
-            // Insert new entry to the top of the array
             guestbookEntries.unshift(newEntry);
             localStorage.setItem('chic_guestbook', JSON.stringify(guestbookEntries));
             
             renderGuestbook();
             showToast("✦ 방명록에 발자취가 세련되게 새겨졌습니다.");
 
-            // Reset inputs
             nameInput.value = '';
             messageInput.value = '';
         }
 
-        // Like/Heart a guestbook entry
         function likeGuestbookEntry(index) {
             guestbookEntries[index].likes = (guestbookEntries[index].likes || 0) + 1;
             localStorage.setItem('chic_guestbook', JSON.stringify(guestbookEntries));
@@ -1340,7 +1335,6 @@
             showToast("✦ 감상평에 공감의 깊이를 더했습니다.");
         }
 
-        // Delete a guestbook entry
         function deleteGuestbookEntry(index) {
             guestbookEntries.splice(index, 1);
             localStorage.setItem('chic_guestbook', JSON.stringify(guestbookEntries));
@@ -1348,7 +1342,6 @@
             showToast("✦ 방명록 메시지가 안전하게 정돈되었습니다.");
         }
 
-        // Helper to prevent HTML Injection
         function escapeHtml(text) {
             const map = {
                 '&': '&amp;',
@@ -1370,10 +1363,30 @@
         let keys = {};
         let animationId;
 
-        function openSecretGame() {
+        // Game Selection State
+        let currentGameMode = 'catcher';
+
+        // Sweet Jumper (Endless Jumper) Specific States (Tuned physics values for high-speed responsiveness)
+        let jumperPlayer = { 
+            x: 50, 
+            y: 0, 
+            vy: 0, 
+            radius: 12, 
+            gravity: 0.85,       /* Speeded up gravity for fast descent */
+            jumpForce: -13.5,    /* Speeded up jump lift force for snappiness */
+            jumpCount: 0 
+        };
+        let jumperObstacles = [];
+        let jumperFrameCount = 0;
+        let jumperSpeed = 4.5;   /* Speeded up baseline speed for dynamic flow */
+        let invulnerabilityFrames = 0;
+
+        function openSecretGame(mode = 'catcher') {
             document.getElementById('secret-game-modal').classList.remove('opacity-0', 'pointer-events-none');
+            currentGameMode = mode;
+            setupGameUIForMode(mode);
             initCanvas();
-            showToast("✦ 숨겨진 아틀리에 연구소에 오신 것을 환영합니다! 미니게임에 도전하세요.");
+            showToast(`✦ 숨겨진 아틀리에 연구소에 오신 것을 환영합니다! [${mode === 'catcher' ? 'Foil Catcher' : 'Sweet Jumper'}] 가동.`);
         }
 
         function closeSecretGame() {
@@ -1400,15 +1413,69 @@
         function drawInitialState() {
             if (!ctx || !canvas) return;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            // Draw minimalist golden plate
-            ctx.fillStyle = '#D4AF37';
-            ctx.beginPath();
-            if (ctx.roundRect) {
-                ctx.roundRect(basket.x, canvas.height - 20, basket.width, basket.height, 4);
+            
+            if (currentGameMode === 'catcher') {
+                ctx.fillStyle = '#D4AF37';
+                ctx.beginPath();
+                if (ctx.roundRect) {
+                    ctx.roundRect(basket.x, canvas.height - 20, basket.width, basket.height, 4);
+                } else {
+                    ctx.rect(basket.x, canvas.height - 20, basket.width, basket.height);
+                }
+                ctx.fill();
             } else {
-                ctx.rect(basket.x, canvas.height - 20, basket.width, basket.height);
+                ctx.strokeStyle = '#D4AF37';
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.moveTo(0, canvas.height - 25);
+                ctx.lineTo(canvas.width, canvas.height - 25);
+                ctx.stroke();
+                drawMacaron(ctx, jumperPlayer.x, canvas.height - 25 - jumperPlayer.radius);
             }
-            ctx.fill();
+        }
+
+        function setupGameUIForMode(mode) {
+            const badgeCatcher = document.getElementById('mode-badge-catcher');
+            const badgeJumper = document.getElementById('mode-badge-jumper');
+            
+            if (mode === 'catcher') {
+                // UI Highlights
+                badgeCatcher.className = "game-mode-btn text-gold border-gold pb-1 px-2 border-b-2 font-bold";
+                badgeJumper.className = "game-mode-btn text-slate-400 dark:text-gray-500 border-transparent pb-1 px-2 border-b-2";
+                
+                document.getElementById('game-modal-title').textContent = "골드 포일 캐처 (Gold Foil Catcher)";
+                document.getElementById('game-modal-desc').textContent = "하늘에서 떨어지는 황금박(✦)과 라즈베리(🍓)를 골드 접시에 가득 담아보세요!";
+                document.getElementById('overlay-desc').textContent = "키보드 방향키(←, →) 또는 모바일 하단 버튼으로 접시를 움직이세요. 오염물질인 탄 재(🌑)를 받으면 실패합니다!";
+                document.getElementById('score-target').textContent = "/ 100";
+                
+                document.getElementById('mobile-control-panel').innerHTML = `
+                    <button id="btn-left" class="flex-1 py-3.5 bg-slate-100 dark:bg-white/5 active:bg-gold/20 border border-slate-200 dark:border-white/10 text-slate-950 dark:text-white rounded-sm text-center select-none text-sm transition-colors">◀ LEFT</button>
+                    <button id="btn-right" class="flex-1 py-3.5 bg-slate-100 dark:bg-white/5 active:bg-gold/20 border border-slate-200 dark:border-white/10 text-slate-950 dark:text-white rounded-sm text-center select-none text-sm transition-colors">RIGHT ▶</button>
+                `;
+                bindCatcherControls();
+            } else {
+                // UI Highlights
+                badgeCatcher.className = "game-mode-btn text-slate-400 dark:text-gray-500 border-transparent pb-1 px-2 border-b-2";
+                badgeJumper.className = "game-mode-btn text-gold border-gold pb-1 px-2 border-b-2 font-bold";
+                
+                document.getElementById('game-modal-title').textContent = "스위트 점퍼 (Sweet Jumper)";
+                document.getElementById('game-modal-desc').textContent = "쏟아지는 커피, 디저트, 도구들을 점프하여 피하세요! 생명이 모두 사라질 때까지 계속 달립니다.";
+                document.getElementById('overlay-desc').textContent = "스페이스바(Space), 위쪽 방향키(↑) 또는 모바일 점프 버튼으로 마카롱을 뛰게 만드세요. 고속 더블 점프도 가능합니다!";
+                document.getElementById('score-target').textContent = "(무한 모드)";
+                
+                document.getElementById('mobile-control-panel').innerHTML = `
+                    <button id="btn-jump" class="flex-1 py-4 bg-slate-100 dark:bg-white/5 active:bg-gold/20 border border-slate-200 dark:border-white/10 text-slate-950 dark:text-white rounded-sm text-center select-none text-sm font-bold tracking-widest transition-colors">▲ HIGH SPEED JUMP (DOUBLE JUMP)</button>
+                `;
+                bindJumperControls();
+            }
+            
+            document.getElementById('game-overlay').classList.remove('hidden');
+            document.getElementById('overlay-title').textContent = mode === 'catcher' ? "CHIC SECRET ATELIER LAB" : "DESSERT RUN: SWEET JUMPER";
+            document.getElementById('game-start-btn').textContent = "START GAME";
+            
+            score = 0;
+            lives = 3;
+            updateGameUI();
         }
 
         function startGame() {
@@ -1417,12 +1484,24 @@
             score = 0;
             lives = 3;
             fallingItems = [];
+            jumperObstacles = [];
+            jumperFrameCount = 0;
+            jumperSpeed = 4.5;
+            invulnerabilityFrames = 0;
             isPlaying = true;
             updateGameUI();
             initCanvas();
             
             if (animationId) cancelAnimationFrame(animationId);
-            gameLoop();
+            
+            if (currentGameMode === 'catcher') {
+                gameLoop();
+            } else {
+                jumperPlayer.y = canvas.height - 25 - jumperPlayer.radius;
+                jumperPlayer.vy = 0;
+                jumperPlayer.jumpCount = 0;
+                jumperLoop();
+            }
         }
 
         function stopGame() {
@@ -1438,14 +1517,13 @@
 
         function spawnFallingItem() {
             if (!canvas) return;
-            // Spawn probability throttle
             if (fallingItems.length < 5 && Math.random() < 0.035) {
                 const isDark = document.documentElement.classList.contains('dark');
                 const types = [
-                    { char: '✦', color: '#D4AF37', points: 10, isBad: false }, // Gold Foil
-                    { char: '🍓', color: '#E11D48', points: 15, isBad: false }, // Berry
-                    { char: '🍃', color: '#16A34A', points: 5, isBad: false },  // Matcha
-                    { char: '🌑', color: isDark ? '#9CA3AF' : '#1F2937', points: 0, isBad: true } // Charcoal dust
+                    { char: '✦', color: '#D4AF37', points: 10, isBad: false }, 
+                    { char: '🍓', color: '#E11D48', points: 15, isBad: false }, 
+                    { char: '🍃', color: '#16A34A', points: 5, isBad: false },  
+                    { char: '🌑', color: isDark ? '#9CA3AF' : '#1F2937', points: 0, isBad: true } 
                 ];
                 const selectedType = types[Math.floor(Math.random() * types.length)];
                 fallingItems.push({
@@ -1458,9 +1536,8 @@
         }
 
         function gameLoop() {
-            if (!isPlaying || !ctx || !canvas) return;
+            if (!isPlaying || !ctx || !canvas || currentGameMode !== 'catcher') return;
 
-            // Handle Plate Left/Right controls (incorporating desktop keyboard inputs)
             if (keys['ArrowLeft'] || keys['Left']) {
                 basket.x = Math.max(0, basket.x - basket.speed);
             }
@@ -1482,22 +1559,18 @@
 
             spawnFallingItem();
 
-            // Render and calculate item positions
             for (let i = fallingItems.length - 1; i >= 0; i--) {
                 const item = fallingItems[i];
                 item.y += item.speed;
 
-                // Draw falling element
                 ctx.fillStyle = item.color;
                 ctx.font = '16px "Montserrat", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.fillText(item.char, item.x, item.y);
 
-                // Collision Detection with plate boundary
                 const plateTopY = canvas.height - 20;
                 if (item.y >= plateTopY - 6 && item.y <= plateTopY + basket.height + 4) {
                     if (item.x >= basket.x - 4 && item.x <= basket.x + basket.width + 4) {
-                        // Collision occurred
                         if (item.isBad) {
                             lives--;
                             showToast("🌑 오염된 탄 재를 받았습니다! 생명이 차감됩니다.");
@@ -1521,7 +1594,6 @@
                     }
                 }
 
-                // Remove out of screen elements
                 if (item.y > canvas.height) {
                     fallingItems.splice(i, 1);
                 }
@@ -1530,49 +1602,249 @@
             animationId = requestAnimationFrame(gameLoop);
         }
 
+        function jumperLoop() {
+            if (!isPlaying || !ctx || !canvas || currentGameMode !== 'jumper') return;
+
+            // 성공해서 점수(달린 거리)가 오를수록 장애물 다가오는 속도와 마카롱의 점프 공전 궤도를 극적으로 단축시킵니다.
+            const baseSpeed = 4.5;
+            const baseGravity = 0.85;
+            const baseJumpForce = -13.5;
+
+            // 실시간 가속 수식 매핑 (점수당 속도 0.05 증가, 중력 0.005 증가, 도약 탄성 점진 상승)
+            jumperSpeed = baseSpeed + (score * 0.05);
+            jumperPlayer.gravity = baseGravity + (score * 0.005);
+            jumperPlayer.jumpForce = baseJumpForce - (score * 0.04);
+
+            if (invulnerabilityFrames > 0) invulnerabilityFrames--;
+
+            // Player physics updates
+            jumperPlayer.vy += jumperPlayer.gravity;
+            jumperPlayer.y += jumperPlayer.vy;
+
+            // Collision with floor
+            const floorY = canvas.height - 25;
+            if (jumperPlayer.y + jumperPlayer.radius >= floorY) {
+                jumperPlayer.y = floorY - jumperPlayer.radius;
+                jumperPlayer.vy = 0;
+                jumperPlayer.jumpCount = 0;
+            }
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Ground Drawing
+            ctx.strokeStyle = '#D4AF37';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(0, floorY);
+            ctx.lineTo(canvas.width, floorY);
+            ctx.stroke();
+
+            // Run Distance/Score incrementer
+            jumperFrameCount++;
+            if (jumperFrameCount % 6 === 0) {
+                score++;
+                updateGameUI();
+            }
+
+            // Spawn sweet obstacles randomly
+            // 속도 가속에 비례해 장애물 생성 간격을 최적화하여 회피가 가능한 레벨 디자인 유지
+            const spawnInterval = Math.max(45, 85 - Math.floor(score * 0.25));
+            if (jumperObstacles.length === 0 || (jumperFrameCount % spawnInterval === 0 && Math.random() < 0.6)) {
+                const obsTypes = [
+                    { type: 'coffee', w: 18, h: 24, name: '뜨거운 에스프레소' },
+                    { type: 'cake', w: 25, h: 20, name: '시그니처 조각케이크' },
+                    { type: 'whisk', w: 10, h: 28, name: '파티시에 롤링핀' }
+                ];
+                const selType = obsTypes[Math.floor(Math.random() * obsTypes.length)];
+                jumperObstacles.push({
+                    x: canvas.width,
+                    y: floorY - selType.h,
+                    ...selType
+                });
+            }
+
+            // Draw hopping Macaron
+            if (invulnerabilityFrames === 0 || Math.floor(invulnerabilityFrames / 4) % 2 === 0) {
+                drawMacaron(ctx, jumperPlayer.x, jumperPlayer.y);
+            }
+
+            // Draw obstacles and handle collision
+            for (let i = jumperObstacles.length - 1; i >= 0; i--) {
+                const obs = jumperObstacles[i];
+                obs.x -= jumperSpeed;
+
+                if (obs.type === 'coffee') {
+                    drawCoffeeCup(ctx, obs.x, obs.y, obs.w, obs.h);
+                } else if (obs.type === 'cake') {
+                    drawCakeSlice(ctx, obs.x, obs.y, obs.w, obs.h);
+                } else if (obs.type === 'whisk') {
+                    drawRollingPin(ctx, obs.x, obs.y, obs.w, obs.h);
+                }
+
+                // Collision bounding boxes calculations
+                const pxLeft = jumperPlayer.x - jumperPlayer.radius + 2;
+                const pxRight = jumperPlayer.x + jumperPlayer.radius - 2;
+                const pyTop = jumperPlayer.y - jumperPlayer.radius + 2;
+                const pyBottom = jumperPlayer.y + jumperPlayer.radius;
+
+                if (pxRight > obs.x && pxLeft < obs.x + obs.w && pyBottom > obs.y && pyTop < obs.y + obs.h) {
+                    if (invulnerabilityFrames <= 0) {
+                        lives--;
+                        invulnerabilityFrames = 65; 
+                        showToast(`💥 디저트 장애물(${obs.name})에 충돌했습니다!`);
+                        updateGameUI();
+                        
+                        if (lives <= 0) {
+                            // 죽었을 때 점수가 100점 이상 달성되었다면 성공 리워드를 보여주고, 아니면 게임오버 처리
+                            if (score >= 100) {
+                                handleGameWin();
+                            } else {
+                                handleGameOver();
+                            }
+                            return;
+                        }
+                    }
+                }
+
+                if (obs.x + obs.w < 0) {
+                    jumperObstacles.splice(i, 1);
+                }
+            }
+
+            animationId = requestAnimationFrame(jumperLoop);
+        }
+
+        function drawMacaron(ctx, x, y) {
+            ctx.save();
+            ctx.translate(x, y);
+            // Top half pink crust
+            ctx.fillStyle = '#F472B6'; 
+            ctx.beginPath();
+            ctx.arc(0, -2, 11, Math.PI, 0);
+            ctx.fill();
+            // Cream core
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(-11, -2, 22, 4);
+            // Bottom half crust
+            ctx.fillStyle = '#F472B6';
+            ctx.beginPath();
+            ctx.arc(0, 2, 11, 0, Math.PI);
+            ctx.fill();
+            ctx.restore();
+        }
+
+        function drawCoffeeCup(ctx, x, y, w, h) {
+            ctx.fillStyle = '#78350F'; // Coffee Brown Cup
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x + w, y);
+            ctx.lineTo(x + w * 0.8, y + h);
+            ctx.lineTo(x + w * 0.2, y + h);
+            ctx.closePath();
+            ctx.fill();
+            // Cup Handle
+            ctx.strokeStyle = '#78350F';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(x + w * 0.85, y + h * 0.4, w * 0.25, -Math.PI/2, Math.PI/2);
+            ctx.stroke();
+        }
+
+        function drawCakeSlice(ctx, x, y, w, h) {
+            ctx.fillStyle = '#FEF08A'; // Yellow sponge layers
+            ctx.beginPath();
+            ctx.moveTo(x, y + h);
+            ctx.lineTo(x + w, y + h);
+            ctx.lineTo(x + w, y);
+            ctx.closePath();
+            ctx.fill();
+            // Red strawberry on top
+            ctx.fillStyle = '#EF4444';
+            ctx.beginPath();
+            ctx.arc(x + w * 0.85, y + 2, 4, 0, Math.PI*2);
+            ctx.fill();
+        }
+
+        function drawRollingPin(ctx, x, y, w, h) {
+            ctx.fillStyle = '#D97706'; // Wooden amber
+            ctx.fillRect(x, y + h * 0.25, w, h * 0.5); 
+            ctx.fillStyle = '#F59E0B'; // Wooden handle tips
+            ctx.fillRect(x - 4, y + h * 0.35, 4, h * 0.3);
+            ctx.fillRect(x + w, y + h * 0.35, 4, h * 0.3);
+        }
+
         function handleGameOver() {
             isPlaying = false;
             document.getElementById('game-overlay').classList.remove('hidden');
             document.getElementById('overlay-title').textContent = "GAME OVER";
-            document.getElementById('overlay-desc').textContent = `최종 점수: ${score}점. 명예 파티시에 등극에 아쉽게 실패했습니다. 포기하지 마세요!`;
+            
+            if (currentGameMode === 'catcher') {
+                document.getElementById('overlay-desc').textContent = `최종 점수: ${score}점. 명예 파티시에 등극에 아쉽게 실패했습니다. 포기하지 마세요!`;
+            } else {
+                document.getElementById('overlay-desc').textContent = `최종 달린 거리: ${score}m. 디저트 장애물에 가로막혀 마카롱이 멈추었습니다!`;
+            }
             document.getElementById('game-start-btn').textContent = "RETRY";
         }
 
         function handleGameWin() {
             isPlaying = false;
             document.getElementById('reward-screen').classList.remove('hidden');
-            showToast("🏆 완벽한 레시피 캐칭 성공! 100점 보너스가 해제되었습니다.");
+            showToast("🏆 완벽한 미식 도전 성공! 히든 골든 보너스가 해제되었습니다.");
         }
 
-        // Attach Keyboard Bindings
+        function jumperTriggerJump() {
+            if (!isPlaying || currentGameMode !== 'jumper') return;
+            if (jumperPlayer.jumpCount < 2) {
+                jumperPlayer.vy = jumperPlayer.jumpForce;
+                jumperPlayer.jumpCount++;
+            }
+        }
+
+        // Keyboard Controls
         window.addEventListener('keydown', e => {
-            if (['ArrowLeft', 'ArrowRight', ' '].includes(e.key)) {
+            if (['ArrowLeft', 'ArrowRight', ' ', 'ArrowUp'].includes(e.key)) {
                 e.preventDefault();
             }
             keys[e.key] = true;
+
+            // Trigger Jump on Key Press
+            if (currentGameMode === 'jumper' && (e.key === ' ' || e.key === 'ArrowUp')) {
+                jumperTriggerJump();
+            }
         });
         window.addEventListener('keyup', e => {
             keys[e.key] = false;
         });
 
-        // Initialize Mobile Touch Controller Events
-        document.addEventListener('DOMContentLoaded', () => {
+        // Touch Control Binding Logic
+        function bindCatcherControls() {
             const btnLeft = document.getElementById('btn-left');
             const btnRight = document.getElementById('btn-right');
 
             if (btnLeft && btnRight) {
-                // Left Button
                 btnLeft.addEventListener('touchstart', e => { e.preventDefault(); keys['ArrowLeft'] = true; });
                 btnLeft.addEventListener('touchend', () => { keys['ArrowLeft'] = false; });
                 btnLeft.addEventListener('mousedown', () => { keys['ArrowLeft'] = true; });
                 btnLeft.addEventListener('mouseup', () => { keys['ArrowLeft'] = false; });
                 
-                // Right Button
                 btnRight.addEventListener('touchstart', e => { e.preventDefault(); keys['ArrowRight'] = true; });
                 btnRight.addEventListener('touchend', () => { keys['ArrowRight'] = false; });
                 btnRight.addEventListener('mousedown', () => { keys['ArrowRight'] = true; });
                 btnRight.addEventListener('mouseup', () => { keys['ArrowRight'] = false; });
             }
+        }
+
+        function bindJumperControls() {
+            const btnJump = document.getElementById('btn-jump');
+            if (btnJump) {
+                btnJump.addEventListener('touchstart', e => { e.preventDefault(); jumperTriggerJump(); });
+                btnJump.addEventListener('mousedown', e => { e.preventDefault(); jumperTriggerJump(); });
+            }
+        }
+
+        // Initialize Mobile Touch Controller Events on Page Load
+        document.addEventListener('DOMContentLoaded', () => {
+            bindCatcherControls();
 
             // Sync with Window resize for game area
             window.addEventListener('resize', () => {
