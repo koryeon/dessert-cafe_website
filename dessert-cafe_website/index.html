@@ -127,11 +127,35 @@
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-charcoal-deep dark:text-softwhite font-sans antialiased overflow-x-hidden selection:bg-gold selection:text-charcoal-deep">
 
+    <!-- Welcome Invitation Card (Popup on Load) -->
+    <div id="welcome-popup" class="fixed inset-0 z-[110] flex items-center justify-center bg-black/85 backdrop-blur-md transition-opacity duration-500">
+        <div class="bg-white dark:bg-charcoal border border-slate-300 dark:border-gold/30 p-6 sm:p-8 max-w-md w-full mx-6 text-center space-y-6 rounded-sm shadow-2xl relative">
+            <span class="text-[9px] font-bold uppercase tracking-[0.4em] text-gold block animate-pulse">L'Invitation de l'Atelier</span>
+            <h3 class="text-lg sm:text-xl font-extrabold text-slate-950 dark:text-white tracking-widest uppercase">CHIC ATELIER GUIDE</h3>
+            <div class="w-12 h-[1px] bg-gold/30 mx-auto"></div>
+            
+            <div class="text-xs sm:text-sm text-slate-600 dark:text-gray-300 leading-relaxed font-light space-y-4">
+                <p>아틀리에 드 시크에 오신 것을 진심으로 환영합니다.</p>
+                <p class="font-bold text-slate-900 dark:text-white">
+                    (아틀리에 곳곳의 숨겨진 히든 버튼을 찾아 미니게임을 즐겨보세요)
+                </p>
+                <div class="bg-slate-50 dark:bg-charcoal-deep p-3 rounded border border-slate-200 dark:border-white/5 text-left text-[11px] space-y-2">
+                    <p class="flex items-center gap-1.5"><span class="text-gold">✦</span> <span><strong>상단 별표(✦) 태그</strong>: 골드 포일 캐처 게임 입장</span></p>
+                    <p class="flex items-center gap-1.5"><span class="text-gold">🧁</span> <span><strong>시즌 컬렉션의 컵케이크(🧁)</strong>: 스위트 마카롱 점퍼 게임 입장</span></p>
+                </div>
+            </div>
+            
+            <button onclick="acceptInvitation()" class="w-full py-4 bg-slate-950 dark:bg-white text-white dark:text-charcoal-deep font-bold text-xs uppercase tracking-widest hover:bg-gold dark:hover:bg-gold dark:hover:text-charcoal-deep transition-all duration-300 rounded-sm shadow-md">
+                초대장 수락하고 아틀리에 입장하기
+            </button>
+        </div>
+    </div>
+
     <!-- Scroll Progress Bar -->
     <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-gold-dark via-gold to-gold-light z-[100] transition-all duration-75" style="width: 0%;"></div>
 
     <!-- Header Navigation -->
-    <header class="fixed top-0 left-0 w-full z-50 bg-white/90 dark:bg-charcoal-deep/80 backdrop-blur-xl border-b border-slate-200 dark:border-white/5 transition-all duration-500" id="main-header">
+    <header class="fixed top-0 left-0 w-full z-50 bg-white/90 dark:bg-charcoal-deep/80 backdrop-blur-xl border-b border-slate-300 dark:border-white/5 transition-all duration-500" id="main-header">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 h-20 flex items-center justify-between">
             <a href="#" class="text-lg sm:text-xl font-extrabold tracking-[0.25em] text-slate-950 dark:text-white hover:text-gold transition-colors duration-300">
                 CHIC <span class="text-[10px] font-light tracking-[0.1em] text-slate-500 dark:text-gray-400 ml-1 block sm:inline">ATELIER</span>
@@ -282,7 +306,7 @@
                 <a href="#gallery" class="w-full sm:w-auto px-8 py-4 bg-slate-950 dark:bg-white text-white dark:text-charcoal-deep hover:bg-gold dark:hover:bg-gold dark:hover:text-charcoal-deep font-bold text-[10px] sm:text-xs uppercase tracking-[0.2em] transition-all duration-300 shadow-xl hover:shadow-gold/10 transform hover:-translate-y-1">
                     Discover Collection
                 </a>
-                <a href="#customizer" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-slate-350 dark:border-white/20 text-slate-900 dark:text-white hover:border-gold dark:hover:border-gold hover:text-gold dark:hover:text-gold font-bold text-[10px] sm:text-xs uppercase tracking-[0.2em] transition-all duration-300 transform hover:-translate-y-1">
+                <a href="#customizer" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-slate-300 dark:border-white/20 text-slate-900 dark:text-white hover:border-gold dark:hover:border-gold hover:text-gold dark:hover:text-gold font-bold text-[10px] sm:text-xs uppercase tracking-[0.2em] transition-all duration-300 transform hover:-translate-y-1">
                     Try Cake Lab
                 </a>
             </div>
@@ -298,7 +322,7 @@
     </section>
 
     <!-- 2. About Section: 공간 제안 -->
-    <section id="about" class="py-20 sm:py-28 md:py-36 bg-white dark:bg-charcoal relative overflow-hidden border-t border-slate-300 dark:border-white/5">
+    <section id="about" class="py-20 sm:py-28 md:py-36 bg-white dark:bg-charcoal relative overflow-hidden border-t border-slate-350 dark:border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                 
@@ -316,7 +340,7 @@
                         불필요한 장식적 요소를 모두 걷어내고, 무채색의 조명 설계와 절제된 여백을 통해 디저트 한 조각이 하얀 캔버스 위의 예술 작품처럼 빛을 발하도록 돕습니다. 
                     </p>
 
-                    <blockquote class="border-l-2 border-slate-400 dark:border-gold/40 pl-4 py-1 text-xs sm:text-sm text-slate-500 dark:text-gray-400 italic font-light">
+                    <blockquote class="border-l-2 border-slate-300 dark:border-gold/40 pl-4 py-1 text-xs sm:text-sm text-slate-500 dark:text-gray-400 italic font-light">
                         "고요한 빛과 절제된 실루엣 속에서 마주하는 나만을 위한 한 조각의 사치"
                     </blockquote>
 
@@ -369,21 +393,23 @@
     </section>
 
     <!-- 3. Dessert Showcase Section (Interactive Filtering) -->
-    <section id="gallery" class="py-20 sm:py-28 md:py-36 bg-slate-50 dark:bg-charcoal-deep relative overflow-hidden border-t border-slate-300 dark:border-white/5">
+    <section id="gallery" class="py-20 sm:py-28 md:py-36 bg-slate-50 dark:bg-charcoal-deep relative overflow-hidden border-t border-slate-350 dark:border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-4 fade-in-element">
                 <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-gold">02 / Les Collections</span>
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-950 dark:text-white">시즌 한정 디저트 컬렉션</h2>
+                
+                <!-- Fixed wrapping bug: Using 2xl max width to prevent line breaks on single line -->
                 <p class="text-xs sm:text-sm text-slate-600 dark:text-gray-400 font-light max-w-2xl mx-auto">
                     매달 새롭게 큐레이션되는 디저트 미학. 감각적인 풍미를 눈과 입으로 모두 경험하세요.
                     <!-- Hidden Easter Egg (Sweet Jumper) -->
                     <span onclick="openSecretGame('jumper')" class="cursor-pointer inline-block ml-1 text-slate-400 dark:text-gray-500 hover:text-gold hover:scale-150 active:scale-95 transition-all duration-300 filter hover:drop-shadow-[0_0_6px_rgba(212,175,55,1)] text-xs animate-pulse" title="마카롱 장애물 뛰어넘기">🧁</span>
-                    <span class="block text-[10px] text-slate-400 dark:text-gray-500 tracking-widest mt-2 font-normal">(아틀리에 곳곳의 숨겨진 히든 버튼을 찾아 미니게임을 즐겨보세요)</span>
                 </p>
                 <div class="w-12 h-[1px] bg-gold/30 mx-auto mt-6"></div>
             </div>
 
             <!-- Filter Tabs -->
+            <div class="flex justify-center gap-2 sm:gap-4 mb-10 text-[10px] sm:text-xs tracking-widest uppercase font-semibold overflow-x-auto whitespace-nowrap pb-2 fade-in-element">
                 <button onclick="filterMenu('all')" class="menu-tab-btn active px-5 py-2 border border-gold text-gold bg-white dark:bg-transparent rounded-full transition-all duration-300 shadow-sm" id="tab-all">All</button>
                 <button onclick="filterMenu('signature')" class="menu-tab-btn px-5 py-2 border border-slate-300 dark:border-white/10 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white bg-white dark:bg-transparent rounded-full transition-all duration-300 shadow-sm" id="tab-signature">Signature</button>
                 <button onclick="filterMenu('seasonal')" class="menu-tab-btn px-5 py-2 border border-slate-300 dark:border-white/10 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white bg-white dark:bg-transparent rounded-full transition-all duration-300 shadow-sm" id="tab-seasonal">Seasonal Edition</button>
@@ -475,7 +501,7 @@
     </section>
 
     <!-- 4. Interactive Cake Lab Section -->
-    <section id="customizer" class="py-20 sm:py-28 md:py-36 bg-white dark:bg-charcoal relative overflow-hidden border-t border-slate-300 dark:border-white/5">
+    <section id="customizer" class="py-20 sm:py-28 md:py-36 bg-white dark:bg-charcoal relative overflow-hidden border-t border-slate-350 dark:border-white/5">
         <div class="absolute inset-0 glow-overlay pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-4 fade-in-element">
@@ -571,7 +597,7 @@
     </section>
 
     <!-- 5. Guestbook Section: 방명록 (Livre d'Or) -->
-    <section id="guestbook" class="py-20 sm:py-28 bg-slate-100 dark:bg-charcoal-deep relative overflow-hidden border-t border-slate-300 dark:border-white/5">
+    <section id="guestbook" class="py-20 sm:py-28 bg-slate-100 dark:bg-charcoal-deep relative overflow-hidden border-t border-slate-350 dark:border-white/5">
         <div class="absolute inset-0 glow-overlay pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-4 fade-in-element">
@@ -632,7 +658,7 @@
     </section>
 
     <!-- 6. CTA & Location Section: 오시는 길 -->
-    <section id="location" class="py-20 sm:py-28 md:py-36 bg-white dark:bg-charcoal relative border-t border-slate-300 dark:border-white/5">
+    <section id="location" class="py-20 sm:py-28 md:py-36 bg-white dark:bg-charcoal relative border-t border-slate-350 dark:border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                 
@@ -643,10 +669,10 @@
                         <svg class="w-full h-full" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect width="600" height="400" class="fill-slate-100 dark:fill-[#0A0D14]"/>
                             <!-- 가상의 격자 및 도로 디자인 -->
-                            <line x1="0" y1="140" x2="600" y2="140" class="stroke-slate-300 dark:stroke-[#1F2937]" stroke-width="8"/>
-                            <line x1="0" y1="280" x2="600" y2="280" class="stroke-slate-300 dark:stroke-[#1F2937]" stroke-width="8"/>
-                            <line x1="200" y1="0" x2="200" y2="400" class="stroke-slate-300 dark:stroke-[#1F2937]" stroke-width="8"/>
-                            <line x1="450" y1="0" x2="450" y2="400" class="stroke-slate-300 dark:stroke-[#1F2937]" stroke-width="8"/>
+                            <line x1="0" y1="140" x2="600" y2="140" class="stroke-slate-350 dark:stroke-[#1F2937]" stroke-width="8"/>
+                            <line x1="0" y1="280" x2="600" y2="280" class="stroke-slate-350 dark:stroke-[#1F2937]" stroke-width="8"/>
+                            <line x1="200" y1="0" x2="200" y2="400" class="stroke-slate-350 dark:stroke-[#1F2937]" stroke-width="8"/>
+                            <line x1="450" y1="0" x2="450" y2="400" class="stroke-slate-350 dark:stroke-[#1F2937]" stroke-width="8"/>
                             
                             <!-- 서브 스트리트 -->
                             <line x1="0" y1="210" x2="600" y2="210" class="stroke-slate-200 dark:stroke-[#161B25]" stroke-width="2.5"/>
@@ -832,7 +858,7 @@
                 <canvas id="game-canvas" class="w-full h-full block"></canvas>
                 
                 <!-- Play / Game Over Screen Overlay -->
-                <div id="game-overlay" class="absolute inset-0 bg-slate-50/95 dark:bg-charcoal-deep/95 flex flex-col items-center justify-center space-y-4 p-4">
+                <div id="game-overlay" class="absolute inset-0 bg-slate-50/95 dark:bg-charcoal-deep/95 flex flex-col items-center justify-center space-y-4 p-4 animate-fadeIn">
                     <div id="overlay-title" class="text-base sm:text-lg font-bold text-slate-950 dark:text-white">CHIC SECRET ATELIER LAB</div>
                     <p id="overlay-desc" class="text-[11px] text-slate-500 dark:text-gray-400 max-w-xs text-center font-light leading-relaxed">
                         키보드 방향키(←, →) 또는 모바일 하단 버튼으로 접시를 움직이세요. 오염물질인 탄 재(🌑)를 받으면 실패합니다!
@@ -845,7 +871,7 @@
 
             <!-- Mobile Touch Control Panel -->
             <div id="mobile-control-panel" class="flex gap-4 justify-between items-center sm:hidden">
-                <!-- Swapped dynamic button layout rendered here by JS -->
+                <!-- Swapped dynamically by JS -->
             </div>
 
             <!-- Reward Screen -->
@@ -866,7 +892,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-slate-200 dark:bg-charcoal-deep border-t border-slate-300 dark:border-white/5 py-16 text-center text-xs text-slate-500 dark:text-gray-600">
+    <footer class="bg-slate-200 dark:bg-charcoal-deep border-t border-slate-350 dark:border-white/5 py-16 text-center text-xs text-slate-500 dark:text-gray-600">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 space-y-6">
             <p class="font-extrabold text-sm sm:text-base tracking-[0.3em] text-slate-950 dark:text-white">CHIC ATELIER</p>
             <p class="font-light tracking-wide max-w-md mx-auto text-slate-600 dark:text-gray-500 leading-relaxed px-2 text-[11px] sm:text-xs">
@@ -883,6 +909,17 @@
 
     <!-- JavaScript For Interactivity -->
     <script>
+        // Welcome Invitation popup handler
+        function acceptInvitation() {
+            const popup = document.getElementById('welcome-popup');
+            if (popup) {
+                popup.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    popup.remove();
+                }, 500);
+            }
+        }
+
         // 1. Sleek Mobile Menu Drawer controls (Fullscreen layout)
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenuCloseBtn = document.getElementById('mobile-menu-close');
@@ -890,17 +927,17 @@
         const body = document.body;
 
         const openMobileMenu = () => {
-            mobileMenuDrawer.classList.remove('translate-x-full');
+            if (mobileMenuDrawer) mobileMenuDrawer.classList.remove('translate-x-full');
             body.classList.add('overflow-hidden');
         };
 
         const closeMobileMenu = () => {
-            mobileMenuDrawer.classList.add('translate-x-full');
+            if (mobileMenuDrawer) mobileMenuDrawer.classList.add('translate-x-full');
             body.classList.remove('overflow-hidden');
         };
 
-        mobileMenuBtn.addEventListener('click', openMobileMenu);
-        mobileMenuCloseBtn.addEventListener('click', closeMobileMenu);
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
+        if (mobileMenuCloseBtn) mobileMenuCloseBtn.addEventListener('click', closeMobileMenu);
 
         // Close mobile drawer when link clicked
         document.querySelectorAll('.mobile-nav-link').forEach(link => {
@@ -931,39 +968,46 @@
         // 2. Change Header Style on Scroll with fine throttle
         const header = document.getElementById('main-header');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 30) {
-                header.classList.add('bg-white/95', 'dark:bg-charcoal-deep/95', 'shadow-2xl', 'py-1');
-                header.classList.remove('bg-white/90', 'dark:bg-charcoal-deep/80');
-            } else {
-                header.classList.remove('bg-white/95', 'dark:bg-charcoal-deep/95', 'shadow-2xl', 'py-1');
-                header.classList.add('bg-white/90', 'dark:bg-charcoal-deep/80');
+            if (header) {
+                if (window.scrollY > 30) {
+                    header.classList.add('bg-white/95', 'dark:bg-charcoal-deep/95', 'shadow-2xl', 'py-1');
+                    header.classList.remove('bg-white/90', 'dark:bg-charcoal-deep/80');
+                } else {
+                    header.classList.remove('bg-white/95', 'dark:bg-charcoal-deep/95', 'shadow-2xl', 'py-1');
+                    header.classList.add('bg-white/90', 'dark:bg-charcoal-deep/80');
+                }
             }
         });
 
         // 3. Custom Alert & Modal Triggers
         function showCustomAlert() {
             const alertBox = document.getElementById('custom-alert');
-            alertBox.classList.remove('opacity-0', 'pointer-events-none');
+            if (alertBox) alertBox.classList.remove('opacity-0', 'pointer-events-none');
         }
 
         function hideCustomAlert() {
             const alertBox = document.getElementById('custom-alert');
-            alertBox.classList.add('opacity-0', 'pointer-events-none');
+            if (alertBox) alertBox.classList.add('opacity-0', 'pointer-events-none');
         }
 
         function openDetailModal(title, desc, ingredients, pairing) {
-            document.getElementById('modal-title').textContent = title;
-            document.getElementById('modal-desc').textContent = desc;
-            document.getElementById('modal-ingredients').textContent = ingredients;
-            document.getElementById('modal-pairing').textContent = pairing;
-
+            const modalTitle = document.getElementById('modal-title');
+            const modalDesc = document.getElementById('modal-desc');
+            const modalIng = document.getElementById('modal-ingredients');
+            const modalPairing = document.getElementById('modal-pairing');
             const modal = document.getElementById('detail-modal');
-            modal.classList.remove('opacity-0', 'pointer-events-none');
+
+            if (modalTitle) modalTitle.textContent = title;
+            if (modalDesc) modalDesc.textContent = desc;
+            if (modalIng) modalIng.textContent = ingredients;
+            if (modalPairing) modalPairing.textContent = pairing;
+
+            if (modal) modal.classList.remove('opacity-0', 'pointer-events-none');
         }
 
         function closeDetailModal() {
             const modal = document.getElementById('detail-modal');
-            modal.classList.add('opacity-0', 'pointer-events-none');
+            if (modal) modal.classList.add('opacity-0', 'pointer-events-none');
         }
 
         // 4. Scroll Reveal Fade-In Animation Optimized for mobile
@@ -1048,12 +1092,15 @@
             
             // Recalculate price
             const total = prices.shape[cakeState.shape] + prices.cream[cakeState.cream] + prices.garnish[cakeState.garnish];
-            document.getElementById('cake-price').textContent = `${total.toLocaleString()} KRW`;
+            const cakePriceEl = document.getElementById('cake-price');
+            if (cakePriceEl) cakePriceEl.textContent = `${total.toLocaleString()} KRW`;
         }
 
         function redrawCakeVisualizer() {
             const renderGroup = document.getElementById('cake-body-render');
             const garnishGroup = document.getElementById('cake-garnish-render');
+            if (!renderGroup || !garnishGroup) return;
+
             const isDark = document.documentElement.classList.contains('dark');
             
             let topColor = '#FFFFFF';
@@ -1106,8 +1153,10 @@
                 cakeDesc = "Surrealist Fruit Accent (Ruby Red Berry Edition)";
             }
 
-            document.getElementById('cake-visual-title').textContent = cakeTitle;
-            document.getElementById('cake-visual-desc').textContent = cakeDesc;
+            const visualTitle = document.getElementById('cake-visual-title');
+            const visualDesc = document.getElementById('cake-visual-desc');
+            if (visualTitle) visualTitle.textContent = cakeTitle;
+            if (visualDesc) visualDesc.textContent = cakeDesc;
         }
 
         // 7. Route Tab switching function
@@ -1116,20 +1165,27 @@
                 tab.classList.remove('text-gold');
                 tab.classList.add('text-slate-400', 'dark:text-gray-400');
             });
-            document.getElementById(`route-tab-${type}`).classList.add('text-gold');
-            document.getElementById(`route-tab-${type}`).classList.remove('text-slate-400', 'dark:text-gray-400');
+            const selectedTab = document.getElementById(`route-tab-${type}`);
+            if (selectedTab) {
+                selectedTab.classList.add('text-gold');
+                selectedTab.classList.remove('text-slate-400', 'dark:text-gray-400');
+            }
 
             // Bottom Border indicator logic
-            document.getElementById('route-indicator-subway').style.width = type === 'subway' ? '100%' : '0';
-            document.getElementById('route-indicator-car').style.width = type === 'car' ? '100%' : '0';
+            const indSub = document.getElementById('route-indicator-subway');
+            const indCar = document.getElementById('route-indicator-car');
+            if (indSub) indSub.style.width = type === 'subway' ? '100%' : '0';
+            if (indCar) indCar.style.width = type === 'car' ? '100%' : '0';
 
             // Show Content
+            const subContent = document.getElementById('route-subway-content');
+            const carContent = document.getElementById('route-car-content');
             if (type === 'subway') {
-                document.getElementById('route-subway-content').classList.remove('hidden');
-                document.getElementById('route-car-content').classList.add('hidden');
+                if (subContent) subContent.classList.remove('hidden');
+                if (carContent) carContent.classList.add('hidden');
             } else {
-                document.getElementById('route-subway-content').classList.add('hidden');
-                document.getElementById('route-car-content').classList.remove('hidden');
+                if (subContent) subContent.classList.add('hidden');
+                if (carContent) carContent.classList.remove('hidden');
             }
         }
 
@@ -1140,6 +1196,7 @@
 
         function showToast(message) {
             const container = document.getElementById('toast-container');
+            if (!container) return;
             const toast = document.createElement('div');
             toast.className = "bg-white dark:bg-charcoal border border-slate-350 dark:border-gold/40 text-slate-900 dark:text-softwhite text-xs px-5 py-4 shadow-2xl transition-all duration-500 transform translate-y-4 opacity-0 flex items-center gap-3 rounded-sm pointer-events-auto max-w-sm";
             toast.innerHTML = `
@@ -1206,10 +1263,14 @@
             }
         };
 
-        // Attach theme toggles
-        document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
-        document.getElementById('theme-toggle-mobile-quick').addEventListener('click', toggleTheme);
-        document.getElementById('theme-toggle-mobile').addEventListener('click', toggleTheme);
+        // Attach theme toggles safely
+        const toggleBtn = document.getElementById('theme-toggle');
+        const toggleBtnMQ = document.getElementById('theme-toggle-mobile-quick');
+        const toggleBtnM = document.getElementById('theme-toggle-mobile');
+
+        if (toggleBtn) toggleBtn.addEventListener('click', toggleTheme);
+        if (toggleBtnMQ) toggleBtnMQ.addEventListener('click', toggleTheme);
+        if (toggleBtnM) toggleBtnM.addEventListener('click', toggleTheme);
 
         // 9. Interactive Guestbook (Livre d'Or) Logic with localStorage
         const defaultEntries = [
@@ -1259,8 +1320,7 @@
             const counter = document.getElementById('guestbook-counter');
             
             if (!container) return;
-
-            counter.textContent = `TOTAL: ${guestbookEntries.length} NOTES`;
+            if (counter) counter.textContent = `TOTAL: ${guestbookEntries.length} NOTES`;
 
             if (guestbookEntries.length === 0) {
                 container.innerHTML = `
@@ -1304,6 +1364,8 @@
             const pairingSelect = document.getElementById('visitor-pairing');
             const messageInput = document.getElementById('visitor-message');
 
+            if (!nameInput || !pairingSelect || !messageInput) return;
+
             if (!nameInput.value.trim() || !messageInput.value.trim()) {
                 showToast("✦ 이름과 메시지를 정상적으로 채워주세요.");
                 return;
@@ -1324,7 +1386,7 @@
             localStorage.setItem('chic_guestbook', JSON.stringify(guestbookEntries));
             
             renderGuestbook();
-            showToast("✦ 방명록에 발자취가 세련되게 새겨졌습니다.");
+            showToast("✦ 방명록에 발자취가 세룬되게 새겨졌습니다.");
 
             nameInput.value = '';
             messageInput.value = '';
@@ -1368,23 +1430,24 @@
         // Game Selection State
         let currentGameMode = 'catcher';
 
-        // Sweet Jumper (Endless Jumper) Specific States (High-speed jump physics tuning)
+        // Sweet Jumper (Endless Jumper) Specific States (Tuned physics and scale)
         let jumperPlayer = { 
             x: 50, 
             y: 0, 
             vy: 0, 
             radius: 12, 
-            gravity: 0.85,       /* Snappy descent */
-            jumpForce: -13.5,    /* Elevated launch factor */
+            gravity: 0.85, 
+            jumpForce: -13.5, 
             jumpCount: 0 
         };
         let jumperObstacles = [];
         let jumperFrameCount = 0;
-        let jumperSpeed = 4.5;   /* High baseline tempo */
+        let jumperSpeed = 4.5;
         let invulnerabilityFrames = 0;
 
         function openSecretGame(mode = 'catcher') {
-            document.getElementById('secret-game-modal').classList.remove('opacity-0', 'pointer-events-none');
+            const modal = document.getElementById('secret-game-modal');
+            if (modal) modal.classList.remove('opacity-0', 'pointer-events-none');
             currentGameMode = mode;
             setupGameUIForMode(mode);
             initCanvas();
@@ -1392,12 +1455,14 @@
         }
 
         function closeSecretGame() {
-            document.getElementById('secret-game-modal').classList.add('opacity-0', 'pointer-events-none');
+            const modal = document.getElementById('secret-game-modal');
+            if (modal) modal.classList.add('opacity-0', 'pointer-events-none');
             stopGame();
         }
 
         function initCanvas() {
             canvas = document.getElementById('game-canvas');
+            if (!canvas) return;
             ctx = canvas.getContext('2d');
             resizeCanvas();
             basket.x = (canvas.width - basket.width) / 2;
@@ -1407,8 +1472,8 @@
         function resizeCanvas() {
             const container = document.getElementById('canvas-container');
             if (canvas && container) {
-                canvas.width = container.clientWidth;
-                canvas.height = container.clientHeight;
+                canvas.width = container.clientWidth || 400;
+                canvas.height = container.clientHeight || 300;
             }
         }
 
@@ -1439,41 +1504,53 @@
         function setupGameUIForMode(mode) {
             const badgeCatcher = document.getElementById('mode-badge-catcher');
             const badgeJumper = document.getElementById('mode-badge-jumper');
+            const modalTitle = document.getElementById('game-modal-title');
+            const modalDesc = document.getElementById('game-modal-desc');
+            const overlayDesc = document.getElementById('overlay-desc');
+            const scoreTarget = document.getElementById('score-target');
+            const ctrlPanel = document.getElementById('mobile-control-panel');
+            const overlay = document.getElementById('game-overlay');
+            const startBtn = document.getElementById('game-start-btn');
             
             if (mode === 'catcher') {
                 // UI Highlights
-                badgeCatcher.className = "game-mode-btn text-gold border-gold pb-1 px-2 border-b-2 font-bold";
-                badgeJumper.className = "game-mode-btn text-slate-400 dark:text-gray-500 border-transparent pb-1 px-2 border-b-2";
+                if (badgeCatcher) badgeCatcher.className = "game-mode-btn text-gold border-gold pb-1 px-2 border-b-2 font-bold";
+                if (badgeJumper) badgeJumper.className = "game-mode-btn text-slate-400 dark:text-gray-500 border-transparent pb-1 px-2 border-b-2";
                 
-                document.getElementById('game-modal-title').textContent = "골드 포일 캐처 (Gold Foil Catcher)";
-                document.getElementById('game-modal-desc').textContent = "하늘에서 떨어지는 황금박(✦)과 라즈베리(🍓)를 골드 접시에 가득 담아보세요!";
-                document.getElementById('overlay-desc').textContent = "키보드 방향키(←, →) 또는 모바일 하단 버튼으로 접시를 움직이세요. 오염물질인 탄 재(🌑)를 받으면 실패합니다!";
-                document.getElementById('score-target').textContent = "/ 100";
+                if (modalTitle) modalTitle.textContent = "골드 포일 캐처 (Gold Foil Catcher)";
+                if (modalDesc) modalDesc.textContent = "하늘에서 떨어지는 황금박(✦)과 라즈베리(🍓)를 골드 접시에 가득 담아보세요!";
+                if (overlayDesc) overlayDesc.textContent = "키보드 방향키(←, →) 또는 모바일 하단 버튼으로 접시를 움직이세요. 오염물질인 탄 재(🌑)를 받으면 실패합니다!";
+                if (scoreTarget) scoreTarget.textContent = "/ 100";
                 
-                document.getElementById('mobile-control-panel').innerHTML = `
-                    <button id="btn-left" class="flex-1 py-3.5 bg-white dark:bg-white/5 active:bg-gold/20 border border-slate-300 dark:border-white/10 text-slate-950 dark:text-white rounded-sm text-center select-none text-sm font-bold shadow-sm transition-colors">◀ LEFT</button>
-                    <button id="btn-right" class="flex-1 py-3.5 bg-white dark:bg-white/5 active:bg-gold/20 border border-slate-300 dark:border-white/10 text-slate-950 dark:text-white rounded-sm text-center select-none text-sm font-bold shadow-sm transition-colors">RIGHT ▶</button>
-                `;
+                if (ctrlPanel) {
+                    ctrlPanel.innerHTML = `
+                        <button id="btn-left" class="flex-1 py-3.5 bg-white dark:bg-white/5 active:bg-gold/20 border border-slate-300 dark:border-white/10 text-slate-950 dark:text-white rounded-sm text-center select-none text-sm font-bold shadow-sm transition-colors">◀ LEFT</button>
+                        <button id="btn-right" class="flex-1 py-3.5 bg-white dark:bg-white/5 active:bg-gold/20 border border-slate-300 dark:border-white/10 text-slate-950 dark:text-white rounded-sm text-center select-none text-sm font-bold shadow-sm transition-colors">RIGHT ▶</button>
+                    `;
+                }
                 bindCatcherControls();
             } else {
                 // UI Highlights
-                badgeCatcher.className = "game-mode-btn text-slate-400 dark:text-gray-500 border-transparent pb-1 px-2 border-b-2";
-                badgeJumper.className = "game-mode-btn text-gold border-gold pb-1 px-2 border-b-2 font-bold";
+                if (badgeCatcher) badgeCatcher.className = "game-mode-btn text-slate-400 dark:text-gray-500 border-transparent pb-1 px-2 border-b-2";
+                if (badgeJumper) badgeJumper.className = "game-mode-btn text-gold border-gold pb-1 px-2 border-b-2 font-bold";
                 
-                document.getElementById('game-modal-title').textContent = "스위트 점퍼 (Sweet Jumper)";
-                document.getElementById('game-modal-desc').textContent = "쏟아지는 커피, 디저트, 도구들을 점프하여 피하세요! 생명이 모두 사라질 때까지 계속 달립니다.";
-                document.getElementById('overlay-desc').textContent = "스페이스바(Space), 위쪽 방향키(↑) 또는 모바일 점프 버튼으로 마카롱을 뛰게 만드세요. 고속 더블 점프도 가능합니다!";
-                document.getElementById('score-target').textContent = "(무한 모드)";
+                if (modalTitle) modalTitle.textContent = "스위트 점퍼 (Sweet Jumper)";
+                if (modalDesc) modalDesc.textContent = "쏟아지는 커피, 디저트, 도구들을 점프하여 피하세요! 생명이 모두 사라질 때까지 계속 달립니다.";
+                if (overlayDesc) overlayDesc.textContent = "스페이스바(Space), 위쪽 방향키(↑) 또는 모바일 점프 버튼으로 마카롱을 뛰게 만드세요. 고속 더블 점프도 가능합니다!";
+                if (scoreTarget) scoreTarget.textContent = "(무한 모드)";
                 
-                document.getElementById('mobile-control-panel').innerHTML = `
-                    <button id="btn-jump" class="flex-1 py-4 bg-white dark:bg-white/5 active:bg-gold/20 border border-slate-300 dark:border-white/10 text-slate-950 dark:text-white rounded-sm text-center select-none text-sm font-bold tracking-widest shadow-sm transition-colors">▲ HIGH SPEED JUMP (DOUBLE JUMP)</button>
-                `;
+                if (ctrlPanel) {
+                    ctrlPanel.innerHTML = `
+                        <button id="btn-jump" class="flex-1 py-4 bg-white dark:bg-white/5 active:bg-gold/20 border border-slate-300 dark:border-white/10 text-slate-950 dark:text-white rounded-sm text-center select-none text-sm font-bold tracking-widest shadow-sm transition-colors">▲ HIGH SPEED JUMP (DOUBLE JUMP)</button>
+                    `;
+                }
                 bindJumperControls();
             }
             
-            document.getElementById('game-overlay').classList.remove('hidden');
-            document.getElementById('overlay-title').textContent = mode === 'catcher' ? "CHIC SECRET ATELIER LAB" : "DESSERT RUN: SWEET JUMPER";
-            document.getElementById('game-start-btn').textContent = "START GAME";
+            if (overlay) overlay.classList.remove('hidden');
+            const overlayTitle = document.getElementById('overlay-title');
+            if (overlayTitle) overlayTitle.textContent = mode === 'catcher' ? "CHIC SECRET ATELIER LAB" : "DESSERT RUN: SWEET JUMPER";
+            if (startBtn) startBtn.textContent = "START GAME";
             
             score = 0;
             lives = 3;
@@ -1481,8 +1558,11 @@
         }
 
         function startGame() {
-            document.getElementById('game-overlay').classList.add('hidden');
-            document.getElementById('reward-screen').classList.add('hidden');
+            const overlay = document.getElementById('game-overlay');
+            const reward = document.getElementById('reward-screen');
+            if (overlay) overlay.classList.add('hidden');
+            if (reward) reward.classList.add('hidden');
+            
             score = 0;
             lives = 3;
             fallingItems = [];
@@ -1509,12 +1589,15 @@
         function stopGame() {
             isPlaying = false;
             if (animationId) cancelAnimationFrame(animationId);
-            document.getElementById('game-overlay').classList.remove('hidden');
+            const overlay = document.getElementById('game-overlay');
+            if (overlay) overlay.classList.remove('hidden');
         }
 
         function updateGameUI() {
-            document.getElementById('game-score').textContent = score;
-            document.getElementById('game-lives').textContent = "❤".repeat(lives) + "🖤".repeat(3 - lives);
+            const scoreEl = document.getElementById('game-score');
+            const livesEl = document.getElementById('game-lives');
+            if (scoreEl) scoreEl.textContent = score;
+            if (livesEl) livesEl.textContent = "❤".repeat(lives) + "🖤".repeat(3 - lives);
         }
 
         function spawnFallingItem() {
@@ -1607,12 +1690,11 @@
         function jumperLoop() {
             if (!isPlaying || !ctx || !canvas || currentGameMode !== 'jumper') return;
 
-            // 물리 가중치 동적 가변 조율
+            // physics calculations based on current score to speed up over time
             const baseSpeed = 4.5;
             const baseGravity = 0.85;
             const baseJumpForce = -13.5;
 
-            // 실시간 가속 수식 매핑 (스릴 있는 게임플레이 연출)
             jumperSpeed = baseSpeed + (score * 0.05);
             jumperPlayer.gravity = baseGravity + (score * 0.005);
             jumperPlayer.jumpForce = baseJumpForce - (score * 0.04);
@@ -1669,7 +1751,7 @@
                 drawMacaron(ctx, jumperPlayer.x, jumperPlayer.y);
             }
 
-            // Draw obstacles and handle collision (No early termination at 100 points, play until lives empty)
+            // Draw obstacles and handle collision (Play until lives are empty)
             for (let i = jumperObstacles.length - 1; i >= 0; i--) {
                 const obs = jumperObstacles[i];
                 obs.x -= jumperSpeed;
@@ -1775,20 +1857,26 @@
 
         function handleGameOver() {
             isPlaying = false;
-            document.getElementById('game-overlay').classList.remove('hidden');
-            document.getElementById('overlay-title').textContent = "GAME OVER";
+            const overlay = document.getElementById('game-overlay');
+            const oTitle = document.getElementById('overlay-title');
+            const oDesc = document.getElementById('overlay-desc');
+            const oBtn = document.getElementById('game-start-btn');
+            
+            if (overlay) overlay.classList.remove('hidden');
+            if (oTitle) oTitle.textContent = "GAME OVER";
             
             if (currentGameMode === 'catcher') {
-                document.getElementById('overlay-desc').textContent = `최종 점수: ${score}점. 명예 파티시에 등극에 아쉽게 실패했습니다. 포기하지 마세요!`;
+                if (oDesc) oDesc.textContent = `최종 점수: ${score}점. 명예 파티시에 등극에 아쉽게 실패했습니다. 포기하지 마세요!`;
             } else {
-                document.getElementById('overlay-desc').textContent = `최종 달린 거리: ${score}m. 디저트 장애물에 가로막혀 마카롱이 멈추었습니다!`;
+                if (oDesc) oDesc.textContent = `최종 달린 거리: ${score}m. 디저트 장애물에 가로막혀 마카롱이 멈추었습니다!`;
             }
-            document.getElementById('game-start-btn').textContent = "RETRY";
+            if (oBtn) oBtn.textContent = "RETRY";
         }
 
         function handleGameWin() {
             isPlaying = false;
-            document.getElementById('reward-screen').classList.remove('hidden');
+            const reward = document.getElementById('reward-screen');
+            if (reward) reward.classList.remove('hidden');
             showToast("🏆 완벽한 미식 도전 성공! 히든 골든 보너스가 해제되었습니다.");
         }
 
@@ -1803,7 +1891,11 @@
         // Keyboard Controls
         window.addEventListener('keydown', e => {
             if (['ArrowLeft', 'ArrowRight', ' ', 'ArrowUp'].includes(e.key)) {
-                e.preventDefault();
+                // Only prevent default when the game modal is active, preserving normal scroll on page
+                const gameModal = document.getElementById('secret-game-modal');
+                if (gameModal && !gameModal.classList.contains('pointer-events-none')) {
+                    e.preventDefault();
+                }
             }
             keys[e.key] = true;
 
@@ -1816,18 +1908,24 @@
             keys[e.key] = false;
         });
 
-        // Touch Control Binding Logic
+        // Touch Control Binding Logic (Tuned with passive: false for reliable mobile preventDefault)
         function bindCatcherControls() {
             const btnLeft = document.getElementById('btn-left');
             const btnRight = document.getElementById('btn-right');
 
             if (btnLeft && btnRight) {
-                btnLeft.addEventListener('touchstart', e => { e.preventDefault(); keys['ArrowLeft'] = true; });
+                btnLeft.addEventListener('touchstart', e => { 
+                    e.preventDefault(); 
+                    keys['ArrowLeft'] = true; 
+                }, { passive: false });
                 btnLeft.addEventListener('touchend', () => { keys['ArrowLeft'] = false; });
                 btnLeft.addEventListener('mousedown', () => { keys['ArrowLeft'] = true; });
                 btnLeft.addEventListener('mouseup', () => { keys['ArrowLeft'] = false; });
                 
-                btnRight.addEventListener('touchstart', e => { e.preventDefault(); keys['ArrowRight'] = true; });
+                btnRight.addEventListener('touchstart', e => { 
+                    e.preventDefault(); 
+                    keys['ArrowRight'] = true; 
+                }, { passive: false });
                 btnRight.addEventListener('touchend', () => { keys['ArrowRight'] = false; });
                 btnRight.addEventListener('mousedown', () => { keys['ArrowRight'] = true; });
                 btnRight.addEventListener('mouseup', () => { keys['ArrowRight'] = false; });
@@ -1837,13 +1935,20 @@
         function bindJumperControls() {
             const btnJump = document.getElementById('btn-jump');
             if (btnJump) {
-                btnJump.addEventListener('touchstart', e => { e.preventDefault(); jumperTriggerJump(); });
-                btnJump.addEventListener('mousedown', e => { e.preventDefault(); jumperTriggerJump(); });
+                btnJump.addEventListener('touchstart', e => { 
+                    e.preventDefault(); 
+                    jumperTriggerJump(); 
+                }, { passive: false });
+                btnJump.addEventListener('mousedown', e => { 
+                    e.preventDefault(); 
+                    jumperTriggerJump(); 
+                });
             }
         }
 
         // Initialize Mobile Touch Controller Events on Page Load
         document.addEventListener('DOMContentLoaded', () => {
+            // Safe binding on load
             bindCatcherControls();
 
             // Sync with Window resize for game area
