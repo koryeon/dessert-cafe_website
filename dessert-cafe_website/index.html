@@ -91,6 +91,37 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #D4AF37;
         }
+
+        /* Premium Card 3D Float, Tilt & Pop-Out Effect */
+        .menu-item {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.4s ease !important;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            will-change: transform, box-shadow;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-12px) rotateX(4deg) rotateY(-3deg) scale(1.01) !important;
+            border-color: rgba(212, 175, 55, 0.45) !important;
+            box-shadow: 0 30px 60px -15px rgba(212, 175, 55, 0.12), 
+                        0 15px 30px -10px rgba(0, 0, 0, 0.04) !important;
+        }
+        
+        .dark .menu-item:hover {
+            box-shadow: 0 30px 60px -15px rgba(212, 175, 55, 0.18), 
+                        0 25px 50px -15px rgba(0, 0, 0, 0.7) !important;
+        }
+        
+        /* Inner 3D Pop effect for SVGs inside cards */
+        .menu-item .aspect-square svg {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .menu-item:hover .aspect-square svg {
+            transform: translateZ(25px) scale(1.08) !important;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-charcoal-deep dark:text-softwhite font-sans antialiased overflow-x-hidden selection:bg-gold selection:text-charcoal-deep">
@@ -200,7 +231,7 @@
     <!-- 1. Hero Section: 시선 집중 -->
     <section id="hero" class="relative min-h-screen flex items-center justify-center bg-slate-50 dark:bg-charcoal-deep overflow-hidden pt-20">
         <!-- Background Overlay / Media placeholder -->
-        <div class="absolute inset-0 z-0">
+        <div id="parallax-bg" class="absolute inset-0 z-0 will-change-transform">
             <!-- 시크한 분위기를 묘사하는 SVG 패턴 배경 -->
             <svg class="w-full h-full object-cover opacity-35 dark:opacity-25" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
                 <defs>
@@ -751,6 +782,14 @@
                 const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
                 const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
                 scrollProgress.style.width = scrolled + "%";
+            }
+
+            // Parallax Scroll Effect for Hero Background
+            const parallaxBg = document.getElementById('parallax-bg');
+            if (parallaxBg) {
+                const scrollY = window.scrollY;
+                // Move background slower than scrolling speed (35% speed offset) to create elegant depth
+                parallaxBg.style.transform = `translateY(${scrollY * 0.35}px)`;
             }
         });
 
