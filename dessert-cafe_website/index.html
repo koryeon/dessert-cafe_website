@@ -49,7 +49,7 @@
         
         /* Smooth theme switching */
         *, *::before, *::after {
-            transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease;
+            transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease, box-shadow 0.4s ease;
         }
 
         /* Custom Fade-in Animation on Scroll */
@@ -102,11 +102,12 @@
             will-change: transform, box-shadow;
         }
         
+        /* High-contrast hover and shadows optimized for both Light & Dark modes */
         .menu-item:hover {
             transform: translateY(-12px) rotateX(4deg) rotateY(-3deg) scale(1.01) !important;
-            border-color: rgba(212, 175, 55, 0.45) !important;
-            box-shadow: 0 30px 60px -15px rgba(212, 175, 55, 0.12), 
-                        0 15px 30px -10px rgba(0, 0, 0, 0.04) !important;
+            border-color: rgba(212, 175, 55, 0.5) !important;
+            box-shadow: 0 30px 60px -15px rgba(212, 175, 55, 0.15), 
+                        0 15px 30px -10px rgba(148, 163, 184, 0.25) !important;
         }
         
         .dark .menu-item:hover {
@@ -130,7 +131,7 @@
     <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-gold-dark via-gold to-gold-light z-[100] transition-all duration-75" style="width: 0%;"></div>
 
     <!-- Header Navigation -->
-    <header class="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-charcoal-deep/80 backdrop-blur-xl border-b border-slate-200/50 dark:border-white/5 transition-all duration-500" id="main-header">
+    <header class="fixed top-0 left-0 w-full z-50 bg-white/90 dark:bg-charcoal-deep/80 backdrop-blur-xl border-b border-slate-200 dark:border-white/5 transition-all duration-500" id="main-header">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 h-20 flex items-center justify-between">
             <a href="#" class="text-lg sm:text-xl font-extrabold tracking-[0.25em] text-slate-950 dark:text-white hover:text-gold transition-colors duration-300">
                 CHIC <span class="text-[10px] font-light tracking-[0.1em] text-slate-500 dark:text-gray-400 ml-1 block sm:inline">ATELIER</span>
@@ -142,23 +143,23 @@
                     Home
                     <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gold transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="#about" class="text-slate-500 dark:text-gray-400 hover:text-gold transition-all duration-300 relative group py-1">
+                <a href="#about" class="text-slate-600 dark:text-gray-400 hover:text-gold transition-all duration-300 relative group py-1">
                     About
                     <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gold transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="#gallery" class="text-slate-500 dark:text-gray-400 hover:text-gold transition-all duration-300 relative group py-1">
+                <a href="#gallery" class="text-slate-600 dark:text-gray-400 hover:text-gold transition-all duration-300 relative group py-1">
                     Menu Collection
                     <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gold transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="#customizer" class="text-slate-500 dark:text-gray-400 hover:text-gold transition-all duration-300 relative group py-1">
+                <a href="#customizer" class="text-slate-600 dark:text-gray-400 hover:text-gold transition-all duration-300 relative group py-1">
                     Cake Lab
                     <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gold transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="#guestbook" class="text-slate-500 dark:text-gray-400 hover:text-gold transition-all duration-300 relative group py-1">
+                <a href="#guestbook" class="text-slate-600 dark:text-gray-400 hover:text-gold transition-all duration-300 relative group py-1">
                     Livre d'Or
                     <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gold transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="#location" class="text-slate-500 dark:text-gray-400 hover:text-gold transition-all duration-300 relative group py-1">
+                <a href="#location" class="text-slate-600 dark:text-gray-400 hover:text-gold transition-all duration-300 relative group py-1">
                     Visit
                     <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-gold transition-all duration-300 group-hover:w-full"></span>
                 </a>
@@ -167,12 +168,12 @@
             <!-- Navigation Controls (Theme + Instagram) -->
             <div class="hidden md:flex items-center gap-4">
                 <!-- Theme Toggle Button -->
-                <button id="theme-toggle" class="w-10 h-10 border border-slate-200 dark:border-white/10 hover:border-gold hover:text-gold rounded-full flex items-center justify-center transition-all duration-300 text-slate-800 dark:text-white" aria-label="테마 변경">
+                <button id="theme-toggle" class="w-10 h-10 border border-slate-300 dark:border-white/10 hover:border-gold hover:text-gold rounded-full flex items-center justify-center transition-all duration-300 text-slate-800 dark:text-white bg-slate-50 dark:bg-transparent" aria-label="테마 변경">
                     <i id="theme-icon" class="fa-solid fa-moon text-sm"></i>
                 </button>
 
                 <!-- Instagram Button -->
-                <a href="https://instagram.com" target="_blank" class="text-[10px] px-5 py-2.5 border border-slate-200 dark:border-white/10 hover:border-gold hover:text-gold text-slate-800 dark:text-white rounded-full transition-all duration-500 flex items-center gap-2 tracking-widest font-bold uppercase">
+                <a href="https://instagram.com" target="_blank" class="text-[10px] px-5 py-2.5 border border-slate-300 dark:border-white/10 hover:border-gold hover:text-gold text-slate-800 dark:text-white rounded-full transition-all duration-500 bg-slate-50 dark:bg-transparent flex items-center gap-2 tracking-widest font-bold uppercase">
                     <i class="fab fa-instagram text-xs"></i>
                     <span>Instagram</span>
                 </a>
@@ -181,7 +182,7 @@
             <!-- Mobile Menu Toggle Button -->
             <div class="flex items-center gap-2 md:hidden">
                 <!-- Theme Toggle Button (Mobile Quick Access) -->
-                <button id="theme-toggle-mobile-quick" class="w-9 h-9 border border-slate-200 dark:border-white/10 hover:border-gold hover:text-gold rounded-full flex items-center justify-center transition-all duration-300 text-slate-800 dark:text-white" aria-label="테마 변경">
+                <button id="theme-toggle-mobile-quick" class="w-9 h-9 border border-slate-300 dark:border-white/10 hover:border-gold hover:text-gold rounded-full flex items-center justify-center transition-all duration-300 text-slate-800 dark:text-white bg-slate-50 dark:bg-transparent" aria-label="테마 변경">
                     <i id="theme-icon-mobile-quick" class="fa-solid fa-moon text-xs"></i>
                 </button>
 
@@ -217,7 +218,7 @@
                 <!-- Theme switch inside mobile menu -->
                 <div class="flex justify-center items-center gap-3">
                     <span class="text-[10px] text-slate-400 dark:text-gray-500 tracking-widest">APPEARANCE</span>
-                    <button id="theme-toggle-mobile" class="px-4 py-2 border border-slate-200 dark:border-white/10 rounded-full flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-800 dark:text-white hover:border-gold hover:text-gold">
+                    <button id="theme-toggle-mobile" class="px-4 py-2 border border-slate-300 dark:border-white/10 rounded-full flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-800 dark:text-white hover:border-gold hover:text-gold">
                         <i id="theme-icon-mobile" class="fa-solid fa-moon"></i>
                         <span id="theme-text-mobile">Dark Mode</span>
                     </button>
@@ -248,12 +249,12 @@
                 </defs>
                 <rect width="100%" height="100%" fill="url(#hero-grad)" />
                 <!-- 기하학적 아키텍처 드로잉 라인 -->
-                <circle cx="50%" cy="50%" r="22%" fill="none" class="stroke-slate-200 dark:stroke-gold/5" stroke-width="1" />
-                <circle cx="50%" cy="50%" r="35%" fill="none" class="stroke-slate-300/30 dark:stroke-white/2" stroke-width="1.5" />
-                <path d="M-100,200 L1900,600 M-100,500 L1900,100" class="stroke-slate-200/50 dark:stroke-white/1" stroke-width="1" />
-                <path d="M 100,100 Q 500,400 900,100 T 1700,500" fill="none" class="stroke-slate-300/30 dark:stroke-gold/3" stroke-width="1.2" />
+                <circle cx="50%" cy="50%" r="22%" fill="none" class="stroke-slate-300 dark:stroke-gold/5" stroke-width="1.2" />
+                <circle cx="50%" cy="50%" r="35%" fill="none" class="stroke-slate-400/40 dark:stroke-white/2" stroke-width="1.5" />
+                <path d="M-100,200 L1900,600 M-100,500 L1900,100" class="stroke-slate-300/60 dark:stroke-white/1" stroke-width="1.2" />
+                <path d="M 100,100 Q 500,400 900,100 T 1700,500" fill="none" class="stroke-slate-400/40 dark:stroke-gold/3" stroke-width="1.5" />
             </svg>
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-50 via-transparent to-slate-50/60 dark:from-charcoal-deep dark:via-transparent dark:to-charcoal-deep/60"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-100 via-transparent to-slate-100/60 dark:from-charcoal-deep dark:via-transparent dark:to-charcoal-deep/60"></div>
             <div class="absolute inset-0 glow-overlay"></div>
         </div>
 
@@ -281,7 +282,7 @@
                 <a href="#gallery" class="w-full sm:w-auto px-8 py-4 bg-slate-950 dark:bg-white text-white dark:text-charcoal-deep hover:bg-gold dark:hover:bg-gold dark:hover:text-charcoal-deep font-bold text-[10px] sm:text-xs uppercase tracking-[0.2em] transition-all duration-300 shadow-xl hover:shadow-gold/10 transform hover:-translate-y-1">
                     Discover Collection
                 </a>
-                <a href="#customizer" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-slate-300 dark:border-white/20 text-slate-900 dark:text-white hover:border-gold dark:hover:border-gold hover:text-gold dark:hover:text-gold font-bold text-[10px] sm:text-xs uppercase tracking-[0.2em] transition-all duration-300 transform hover:-translate-y-1">
+                <a href="#customizer" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-slate-350 dark:border-white/20 text-slate-900 dark:text-white hover:border-gold dark:hover:border-gold hover:text-gold dark:hover:text-gold font-bold text-[10px] sm:text-xs uppercase tracking-[0.2em] transition-all duration-300 transform hover:-translate-y-1">
                     Try Cake Lab
                 </a>
             </div>
@@ -297,7 +298,7 @@
     </section>
 
     <!-- 2. About Section: 공간 제안 -->
-    <section id="about" class="py-20 sm:py-28 md:py-36 bg-white dark:bg-charcoal relative overflow-hidden border-t border-slate-200/50 dark:border-white/5">
+    <section id="about" class="py-20 sm:py-28 md:py-36 bg-white dark:bg-charcoal relative overflow-hidden border-t border-slate-300 dark:border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                 
@@ -315,7 +316,7 @@
                         불필요한 장식적 요소를 모두 걷어내고, 무채색의 조명 설계와 절제된 여백을 통해 디저트 한 조각이 하얀 캔버스 위의 예술 작품처럼 빛을 발하도록 돕습니다. 
                     </p>
 
-                    <blockquote class="border-l-2 border-slate-300 dark:border-gold/40 pl-4 py-1 text-xs sm:text-sm text-slate-500 dark:text-gray-400 italic font-light">
+                    <blockquote class="border-l-2 border-slate-400 dark:border-gold/40 pl-4 py-1 text-xs sm:text-sm text-slate-500 dark:text-gray-400 italic font-light">
                         "고요한 빛과 절제된 실루엣 속에서 마주하는 나만을 위한 한 조각의 사치"
                     </blockquote>
 
@@ -329,36 +330,36 @@
 
                 <!-- Right visual side -->
                 <div class="lg:col-span-7 fade-in-element">
-                    <div class="relative group overflow-hidden bg-slate-50 dark:bg-charcoal-deep border border-slate-200/50 dark:border-white/5 aspect-[4/3] flex items-center justify-center rounded-sm">
+                    <div class="relative group overflow-hidden bg-slate-100 dark:bg-charcoal-deep border border-slate-300 dark:border-white/10 aspect-[4/3] flex items-center justify-center rounded-sm shadow-md">
                         <!-- 미니멀 인테리어 모던 갤러리풍 매장 공간 묘사 일러스트 (SVG) -->
-                        <svg class="w-full h-full p-4 sm:p-8 opacity-90 transition-transform duration-1000 group-hover:scale-105" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="800" height="600" class="fill-slate-100 dark:fill-[#0A0D14]"/>
+                        <svg class="w-full h-full p-4 sm:p-8 opacity-95 transition-transform duration-1000 group-hover:scale-105" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="800" height="600" class="fill-slate-150 dark:fill-[#0A0D14]"/>
                             <!-- 벽면과 원근감 있는 가구 라인들 -->
-                            <line x1="100" y1="480" x2="700" y2="480" class="stroke-slate-300 dark:stroke-[#1F2937]" stroke-width="2"/>
-                            <line x1="100" y1="120" x2="700" y2="120" class="stroke-slate-200 dark:stroke-[#1F2937]" stroke-width="1" stroke-dasharray="4 4"/>
-                            <line x1="250" y1="120" x2="250" y2="480" class="stroke-slate-200 dark:stroke-[#161B25]" stroke-width="1"/>
-                            <line x1="550" y1="120" x2="550" y2="480" class="stroke-slate-200 dark:stroke-[#161B25]" stroke-width="1"/>
+                            <line x1="100" y1="480" x2="700" y2="480" class="stroke-slate-350 dark:stroke-[#1F2937]" stroke-width="2.5"/>
+                            <line x1="100" y1="120" x2="700" y2="120" class="stroke-slate-300 dark:stroke-[#1F2937]" stroke-width="1.5" stroke-dasharray="4 4"/>
+                            <line x1="250" y1="120" x2="250" y2="480" class="stroke-slate-300 dark:stroke-[#161B25]" stroke-width="1.2"/>
+                            <line x1="550" y1="120" x2="550" y2="480" class="stroke-slate-300 dark:stroke-[#161B25]" stroke-width="1.2"/>
                             
                             <!-- 미니멀 디자인의 테이블과 오브제 -->
-                            <rect x="280" y="380" width="240" height="100" class="fill-slate-50 stroke-slate-300 dark:fill-[#161B25] dark:stroke-[#374151]" stroke-width="1.5"/>
-                            <circle cx="400" cy="310" r="18" fill="#D4AF37" opacity="0.6"/>
-                            <path d="M400 310 L400 380" stroke="#D4AF37" stroke-width="1.5"/>
+                            <rect x="280" y="380" width="240" height="100" class="fill-white stroke-slate-400 dark:fill-[#161B25] dark:stroke-[#374151]" stroke-width="2"/>
+                            <circle cx="400" cy="310" r="18" fill="#D4AF37" opacity="0.75"/>
+                            <path d="M400 310 L400 380" stroke="#D4AF37" stroke-width="2"/>
                             
                             <!-- 은은한 조명 연출 -->
-                            <polygon points="400,120 310,380 490,380" fill="url(#light-glow)" opacity="0.15"/>
-                            <circle cx="400" cy="120" r="5" class="fill-slate-400 dark:fill-[#9CA3AF]"/>
+                            <polygon points="400,120 310,380 490,380" fill="url(#light-glow)" opacity="0.2"/>
+                            <circle cx="400" cy="120" r="5" class="fill-slate-500 dark:fill-[#9CA3AF]"/>
 
                             <defs>
                                 <linearGradient id="light-glow" x1="400" y1="120" x2="400" y2="380">
                                     <stop offset="0%" stop-color="#D4AF37" />
-                                    <stop offset="100%" class="stop-color-light-glow dark:stop-color-dark-glow" stop-color="#F1F5F9" dark:stop-color="#0A0D14" stop-opacity="0" />
+                                    <stop offset="100%" class="stop-color-light-glow dark:stop-color-dark-glow" stop-color="#E2E8F0" dark:stop-color="#0A0D14" stop-opacity="0" />
                                 </linearGradient>
                             </defs>
                         </svg>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-100 via-transparent to-transparent dark:from-charcoal-deep opacity-80"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-200 via-transparent to-transparent dark:from-charcoal-deep opacity-80"></div>
                         <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 text-left">
                             <p class="text-[10px] sm:text-xs font-bold tracking-[0.2em] text-slate-900 dark:text-white">CHIC ARCHIVE</p>
-                            <p class="text-[8px] sm:text-[10px] text-slate-500 dark:text-gray-500 tracking-wider">Minimalist Concept Lounge, Seongsu</p>
+                            <p class="text-[8px] sm:text-[10px] text-slate-600 dark:text-gray-500 tracking-wider">Minimalist Concept Lounge, Seongsu</p>
                         </div>
                     </div>
                 </div>
@@ -368,7 +369,7 @@
     </section>
 
     <!-- 3. Dessert Showcase Section (Interactive Filtering) -->
-    <section id="gallery" class="py-20 sm:py-28 md:py-36 bg-slate-50 dark:bg-charcoal-deep relative overflow-hidden border-t border-slate-200/50 dark:border-white/5">
+    <section id="gallery" class="py-20 sm:py-28 md:py-36 bg-slate-100 dark:bg-charcoal-deep relative overflow-hidden border-t border-slate-300 dark:border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-4 fade-in-element">
                 <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-gold">02 / Les Collections</span>
@@ -381,49 +382,49 @@
                 <div class="w-12 h-[1px] bg-gold/30 mx-auto mt-6"></div>
             </div>
 
-            <!-- Filter Tabs -->
+            <!-- Filter Tabs with enhanced borders -->
             <div class="flex justify-center gap-2 sm:gap-4 mb-10 text-[10px] sm:text-xs tracking-widest uppercase font-semibold overflow-x-auto whitespace-nowrap pb-2 fade-in-element">
-                <button onclick="filterMenu('all')" class="menu-tab-btn active px-4 py-2 border border-gold text-gold rounded-full transition-all duration-300" id="tab-all">All</button>
-                <button onclick="filterMenu('signature')" class="menu-tab-btn px-4 py-2 border border-slate-200 dark:border-white/10 text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white rounded-full transition-all duration-300" id="tab-signature">Signature</button>
-                <button onclick="filterMenu('seasonal')" class="menu-tab-btn px-4 py-2 border border-slate-200 dark:border-white/10 text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white rounded-full transition-all duration-300" id="tab-seasonal">Seasonal Edition</button>
+                <button onclick="filterMenu('all')" class="menu-tab-btn active px-5 py-2 border border-gold text-gold bg-white dark:bg-transparent rounded-full transition-all duration-300 shadow-sm" id="tab-all">All</button>
+                <button onclick="filterMenu('signature')" class="menu-tab-btn px-5 py-2 border border-slate-300 dark:border-white/10 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white bg-white dark:bg-transparent rounded-full transition-all duration-300 shadow-sm" id="tab-signature">Signature</button>
+                <button onclick="filterMenu('seasonal')" class="menu-tab-btn px-5 py-2 border border-slate-300 dark:border-white/10 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white bg-white dark:bg-transparent rounded-full transition-all duration-300 shadow-sm" id="tab-seasonal">Seasonal Edition</button>
             </div>
 
-            <!-- Dessert Cards Grid -->
+            <!-- Dessert Cards Grid with solid high-contrast borders -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="menu-grid">
                 
                 <!-- Dessert Item 1 -->
-                <div class="menu-item signature bg-white dark:bg-charcoal border border-slate-200/60 dark:border-white/5 hover:border-gold/30 dark:hover:border-gold/30 p-6 flex flex-col justify-between group transition-all duration-500 rounded-sm fade-in-element">
+                <div class="menu-item signature bg-white dark:bg-charcoal border border-slate-300 dark:border-white/10 p-6 flex flex-col justify-between group transition-all duration-500 rounded-sm shadow-sm fade-in-element">
                     <div class="space-y-4">
-                        <div class="aspect-square bg-slate-50 dark:bg-charcoal-deep flex items-center justify-center overflow-hidden relative border border-slate-200/50 dark:border-white/5 rounded-sm">
+                        <div class="aspect-square bg-slate-50 dark:bg-charcoal-deep flex items-center justify-center overflow-hidden relative border border-slate-200 dark:border-white/5 rounded-sm">
                             <!-- Geometric Blanc SVG -->
-                            <svg class="w-2/3 h-2/3 opacity-85 group-hover:scale-110 transition-transform duration-700" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="25" y="25" width="50" height="50" rx="4" class="fill-slate-100 dark:fill-softwhite" stroke="#D4AF37" stroke-width="1"/>
-                                <line x1="25" y1="25" x2="75" y2="75" stroke="#D4AF37" stroke-width="0.5" stroke-dasharray="2 2"/>
-                                <circle cx="50" cy="50" r="10" class="fill-white dark:fill-[#0A0D14]" stroke="#D4AF37" stroke-width="1"/>
+                            <svg class="w-2/3 h-2/3 opacity-90 group-hover:scale-110 transition-transform duration-700" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="25" y="25" width="50" height="50" rx="4" class="fill-slate-100 dark:fill-softwhite" stroke="#D4AF37" stroke-width="1.5"/>
+                                <line x1="25" y1="25" x2="75" y2="75" stroke="#D4AF37" stroke-width="0.7" stroke-dasharray="2 2"/>
+                                <circle cx="50" cy="50" r="10" class="fill-white dark:fill-[#0A0D14]" stroke="#D4AF37" stroke-width="1.5"/>
                                 <circle cx="50" cy="50" r="4" fill="#D4AF37"/>
                             </svg>
-                            <span class="absolute top-4 right-4 text-[9px] font-bold uppercase tracking-wider text-gold bg-gold/10 px-2 py-0.5 rounded">Signature</span>
+                            <span class="absolute top-4 right-4 text-[9px] font-bold uppercase tracking-wider text-gold bg-gold/10 px-2 py-0.5 rounded border border-gold/20">Signature</span>
                         </div>
                         <h3 class="text-lg sm:text-xl font-bold text-slate-950 dark:text-white group-hover:text-gold dark:group-hover:text-gold transition-colors duration-300">쥬메트릭 블랑 (Geometric Blanc)</h3>
                         <p class="text-xs sm:text-sm text-slate-600 dark:text-gray-400 font-light leading-relaxed">
                             기하학적인 구조미가 돋보이는 화이트 초콜릿 무스 케이크. 상큼한 라즈베리 콩피와 은은한 얼그레이 크림의 조화.
                         </p>
                     </div>
-                    <div class="pt-4 border-t border-slate-200/60 dark:border-white/5 mt-6 flex justify-between items-center text-xs text-slate-500 dark:text-gray-500 font-medium">
-                        <span class="text-gold font-semibold">12,000 KRW</span>
+                    <div class="pt-4 border-t border-slate-300 dark:border-white/10 mt-6 flex justify-between items-center text-xs text-slate-500 dark:text-gray-500 font-medium">
+                        <span class="text-gold font-bold">12,000 KRW</span>
                         <button onclick="openDetailModal('쥬메트릭 블랑', '기하학적인 큐브 실루엣 속에 마다가스카르산 바닐라 빈 무스와 수제 라즈베리 젤리가 감춰진 대표 시그니처.', '바닐라 무스, 얼그레이 크림, 라즈베리 콩피, 사브레', 'Single Origin Filter Coffee')" class="text-slate-800 dark:text-white hover:text-gold dark:hover:text-gold transition-colors text-[10px] tracking-wider uppercase font-bold">Details →</button>
                     </div>
                 </div>
 
                 <!-- Dessert Item 2 -->
-                <div class="menu-item seasonal bg-white dark:bg-charcoal border border-slate-200/60 dark:border-white/5 hover:border-gold/30 dark:hover:border-gold/30 p-6 flex flex-col justify-between group transition-all duration-500 rounded-sm fade-in-element">
+                <div class="menu-item seasonal bg-white dark:bg-charcoal border border-slate-300 dark:border-white/10 p-6 flex flex-col justify-between group transition-all duration-500 rounded-sm shadow-sm fade-in-element">
                     <div class="space-y-4">
-                        <div class="aspect-square bg-slate-50 dark:bg-charcoal-deep flex items-center justify-center overflow-hidden relative border border-slate-200/50 dark:border-white/5 rounded-sm">
+                        <div class="aspect-square bg-slate-50 dark:bg-charcoal-deep flex items-center justify-center overflow-hidden relative border border-slate-200 dark:border-white/5 rounded-sm">
                             <!-- Noir Gold Sphère SVG -->
-                            <svg class="w-2/3 h-2/3 opacity-85 group-hover:scale-110 transition-transform duration-700" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="50" r="30" class="fill-slate-100 dark:fill-[#111827]" stroke="#374151" stroke-width="1.5"/>
+                            <svg class="w-2/3 h-2/3 opacity-90 group-hover:scale-110 transition-transform duration-700" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="30" class="fill-slate-100 dark:fill-[#111827]" stroke="#374151" stroke-width="2"/>
                                 <circle cx="40" cy="40" r="12" fill="url(#sphere-gold-grad)"/>
-                                <path d="M 50,20 A 30,30 0 0,0 80,50" stroke="#D4AF37" stroke-width="1.5"/>
+                                <path d="M 50,20 A 30,30 0 0,0 80,50" stroke="#D4AF37" stroke-width="2"/>
                                 <defs>
                                     <radialGradient id="sphere-gold-grad" cx="30%" cy="30%" r="70%">
                                         <stop offset="0%" stop-color="#FFF" />
@@ -432,39 +433,39 @@
                                     </radialGradient>
                                 </defs>
                             </svg>
-                            <span class="absolute top-4 right-4 text-[9px] font-bold uppercase tracking-wider text-slate-800 dark:text-white bg-slate-200 dark:bg-white/10 px-2 py-0.5 rounded">Summer Only</span>
+                            <span class="absolute top-4 right-4 text-[9px] font-bold uppercase tracking-wider text-slate-800 dark:text-white bg-slate-200 dark:bg-white/10 px-2 py-0.5 rounded border border-slate-300/50 dark:border-transparent">Summer Only</span>
                         </div>
                         <h3 class="text-lg sm:text-xl font-bold text-slate-950 dark:text-white group-hover:text-gold dark:group-hover:text-gold transition-colors duration-300">누아르 골드 스페어 (Noir Gold Sphère)</h3>
                         <p class="text-xs sm:text-sm text-slate-600 dark:text-gray-400 font-light leading-relaxed">
                             우주적 구체를 표현한 다크 초콜릿 도스. 순금박 디테일과 진한 모카 카라멜 크런치 필링이 폭발적인 깊이를 제공합니다.
                         </p>
                     </div>
-                    <div class="pt-4 border-t border-slate-200/60 dark:border-white/5 mt-6 flex justify-between items-center text-xs text-slate-500 dark:text-gray-500 font-medium">
-                        <span class="text-gold font-semibold">14,000 KRW</span>
+                    <div class="pt-4 border-t border-slate-300 dark:border-white/10 mt-6 flex justify-between items-center text-xs text-slate-500 dark:text-gray-500 font-medium">
+                        <span class="text-gold font-bold">14,000 KRW</span>
                         <button onclick="openDetailModal('누아르 골드 스페어', '벨기에산 70% 다크 초콜릿 가나슈로 둘러싼 우주 구체 모양 케이크. 내부는 부드러운 수제 에스프레소 솔티드 카라멜 크런치.', '다크초콜릿 가나슈, 모카 익스트랙, 솔티드 카라멜 크런치', 'Espresso Macchiato')" class="text-slate-800 dark:text-white hover:text-gold dark:hover:text-gold transition-colors text-[10px] tracking-wider uppercase font-bold">Details →</button>
                     </div>
                 </div>
 
                 <!-- Dessert Item 3 -->
-                <div class="menu-item signature bg-white dark:bg-charcoal border border-slate-200/60 dark:border-white/5 hover:border-gold/30 dark:hover:border-gold/30 p-6 flex flex-col justify-between group transition-all duration-500 rounded-sm fade-in-element">
+                <div class="menu-item signature bg-white dark:bg-charcoal border border-slate-300 dark:border-white/10 p-6 flex flex-col justify-between group transition-all duration-500 rounded-sm shadow-sm fade-in-element">
                     <div class="space-y-4">
-                        <div class="aspect-square bg-slate-50 dark:bg-charcoal-deep flex items-center justify-center overflow-hidden relative border border-slate-200/50 dark:border-white/5 rounded-sm">
+                        <div class="aspect-square bg-slate-50 dark:bg-charcoal-deep flex items-center justify-center overflow-hidden relative border border-slate-200 dark:border-white/5 rounded-sm">
                             <!-- Minimalist Tart SVG -->
-                            <svg class="w-2/3 h-2/3 opacity-85 group-hover:scale-110 transition-transform duration-700" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M 20,65 L 50,30 L 80,65 Z" fill="#D4AF37" opacity="0.3" stroke="#D4AF37" stroke-width="1"/>
-                                <path d="M 25,60 L 50,35 L 75,60 Z" class="fill-slate-100 dark:fill-[#161B25]" stroke="#D4AF37" stroke-width="1"/>
-                                <line x1="20" y1="65" x2="80" y2="65" stroke="#D4AF37" stroke-width="2"/>
+                            <svg class="w-2/3 h-2/3 opacity-90 group-hover:scale-110 transition-transform duration-700" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 20,65 L 50,30 L 80,65 Z" fill="#D4AF37" opacity="0.4" stroke="#D4AF37" stroke-width="1.5"/>
+                                <path d="M 25,60 L 50,35 L 75,60 Z" class="fill-slate-100 dark:fill-[#161B25]" stroke="#D4AF37" stroke-width="1.5"/>
+                                <line x1="20" y1="65" x2="80" y2="65" stroke="#D4AF37" stroke-width="2.5"/>
                                 <circle cx="50" cy="35" r="4" fill="#FF1493"/>
                             </svg>
-                            <span class="absolute top-4 right-4 text-[9px] font-bold uppercase tracking-wider text-gold bg-gold/10 px-2 py-0.5 rounded">Signature</span>
+                            <span class="absolute top-4 right-4 text-[9px] font-bold uppercase tracking-wider text-gold bg-gold/10 px-2 py-0.5 rounded border border-gold/20">Signature</span>
                         </div>
                         <h3 class="text-lg sm:text-xl font-bold text-slate-950 dark:text-white group-hover:text-gold dark:group-hover:text-gold transition-colors duration-300">트라이앵글 프레즈 (Triangle Fraise)</h3>
                         <p class="text-xs sm:text-sm text-slate-600 dark:text-gray-400 font-light leading-relaxed">
                             건축적 삼각형 구조로 디자인된 시크 타르트. 바삭한 아몬드 타르트 쉘 위에 최고급 국산 딸기를 겹겹이 배치한 미학.
                         </p>
                     </div>
-                    <div class="pt-4 border-t border-slate-200/60 dark:border-white/5 mt-6 flex justify-between items-center text-xs text-slate-500 dark:text-gray-500 font-medium">
-                        <span class="text-gold font-semibold">13,000 KRW</span>
+                    <div class="pt-4 border-t border-slate-300 dark:border-white/10 mt-6 flex justify-between items-center text-xs text-slate-500 dark:text-gray-500 font-medium">
+                        <span class="text-gold font-bold">13,000 KRW</span>
                         <button onclick="openDetailModal('트라이앵글 프레즈', '황금 비율의 피라미드 형태를 구현한 시크 타르트. 피스타치오 크림과 엄선한 성수 딸기가 풍성하게 어우러집니다.', '피스타치오 프렌치 파티시에 크림, 신선한 국산 설향딸기, 아몬드 타르트쉘', 'Matcha Latte')" class="text-slate-800 dark:text-white hover:text-gold dark:hover:text-gold transition-colors text-[10px] tracking-wider uppercase font-bold">Details →</button>
                     </div>
                 </div>
@@ -474,7 +475,7 @@
     </section>
 
     <!-- 4. Interactive Cake Lab Section -->
-    <section id="customizer" class="py-20 sm:py-28 md:py-36 bg-white dark:bg-charcoal relative overflow-hidden border-t border-slate-200/50 dark:border-white/5">
+    <section id="customizer" class="py-20 sm:py-28 md:py-36 bg-white dark:bg-charcoal relative overflow-hidden border-t border-slate-300 dark:border-white/5">
         <div class="absolute inset-0 glow-overlay pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-4 fade-in-element">
@@ -487,17 +488,17 @@
             <!-- Customizer Box -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch fade-in-element">
                 
-                <!-- Custom Control Panel (Left) -->
-                <div class="lg:col-span-5 bg-slate-50 dark:bg-charcoal border border-slate-200/60 dark:border-white/5 p-6 sm:p-8 flex flex-col justify-between space-y-6 sm:space-y-8 rounded-sm">
+                <!-- Custom Control Panel (Left) with strengthened interactive outlines -->
+                <div class="lg:col-span-5 bg-slate-50 dark:bg-charcoal border border-slate-300 dark:border-white/10 p-6 sm:p-8 flex flex-col justify-between space-y-6 sm:space-y-8 rounded-sm shadow-sm">
                     <div class="space-y-6">
-                        <h3 class="text-lg sm:text-xl font-bold text-slate-950 dark:text-white border-b border-slate-200 dark:border-white/10 pb-4">Configure Option</h3>
+                        <h3 class="text-lg sm:text-xl font-bold text-slate-950 dark:text-white border-b border-slate-350 dark:border-white/10 pb-4">Configure Option</h3>
                         
                         <!-- Choice 1: Base Shape -->
                         <div class="space-y-3">
                             <label class="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-gray-400 block">1. 베이스 형태 (Shape)</label>
                             <div class="grid grid-cols-2 gap-3 text-xs">
-                                <button onclick="updateCakeOption('shape', 'cube')" class="cake-opt-btn active px-4 py-3 border border-gold text-gold rounded-sm transition-all text-center" id="opt-shape-cube">미니멀 큐브 (Cube)</button>
-                                <button onclick="updateCakeOption('shape', 'cylinder')" class="cake-opt-btn px-4 py-3 border border-slate-200 dark:border-white/5 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white rounded-sm transition-all text-center" id="opt-shape-cylinder">라운드 실린더 (Cylinder)</button>
+                                <button onclick="updateCakeOption('shape', 'cube')" class="cake-opt-btn active px-4 py-3 border border-gold text-gold bg-white dark:bg-transparent rounded-sm transition-all text-center font-semibold" id="opt-shape-cube">미니멀 큐브 (Cube)</button>
+                                <button onclick="updateCakeOption('shape', 'cylinder')" class="cake-opt-btn px-4 py-3 border border-slate-300 dark:border-white/5 text-slate-600 dark:text-gray-400 hover:border-slate-400 hover:text-slate-900 bg-white dark:bg-transparent rounded-sm transition-all text-center" id="opt-shape-cylinder">라운드 실린더 (Cylinder)</button>
                             </div>
                         </div>
 
@@ -505,8 +506,8 @@
                         <div class="space-y-3">
                             <label class="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-gray-400 block">2. 플레이버 & 크림 (Cream Base)</label>
                             <div class="grid grid-cols-2 gap-3 text-xs">
-                                <button onclick="updateCakeOption('cream', 'blanc')" class="cake-opt-btn active px-4 py-3 border border-gold text-gold rounded-sm transition-all text-center" id="opt-cream-blanc">플래티넘 화이트 (바닐라)</button>
-                                <button onclick="updateCakeOption('cream', 'matcha')" class="cake-opt-btn px-4 py-3 border border-slate-200 dark:border-white/5 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white rounded-sm transition-all text-center" id="opt-cream-matcha">포레스트 그린 (말차)</button>
+                                <button onclick="updateCakeOption('cream', 'blanc')" class="cake-opt-btn active px-4 py-3 border border-gold text-gold bg-white dark:bg-transparent rounded-sm transition-all text-center font-semibold" id="opt-cream-blanc">플래티넘 화이트 (바닐라)</button>
+                                <button onclick="updateCakeOption('cream', 'matcha')" class="cake-opt-btn px-4 py-3 border border-slate-300 dark:border-white/5 text-slate-600 dark:text-gray-400 hover:border-slate-400 hover:text-slate-900 bg-white dark:bg-transparent rounded-sm transition-all text-center" id="opt-cream-matcha">포레스트 그린 (말차)</button>
                             </div>
                         </div>
 
@@ -514,47 +515,47 @@
                         <div class="space-y-3">
                             <label class="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-gray-400 block">3. 포인트 아트 가니쉬 (Artwork Garnish)</label>
                             <div class="grid grid-cols-2 gap-3 text-xs">
-                                <button onclick="updateCakeOption('garnish', 'gold')" class="cake-opt-btn active px-4 py-3 border border-gold text-gold rounded-sm transition-all text-center" id="opt-garnish-gold">골드 리프 크랙 (Gold Foil)</button>
-                                <button onclick="updateCakeOption('garnish', 'berry')" class="cake-opt-btn px-4 py-3 border border-slate-200 dark:border-white/5 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white rounded-sm transition-all text-center" id="opt-garnish-berry">루비 아방가르드 (Berry Art)</button>
+                                <button onclick="updateCakeOption('garnish', 'gold')" class="cake-opt-btn active px-4 py-3 border border-gold text-gold bg-white dark:bg-transparent rounded-sm transition-all text-center font-semibold" id="opt-garnish-gold">골드 리프 크랙 (Gold Foil)</button>
+                                <button onclick="updateCakeOption('garnish', 'berry')" class="cake-opt-btn px-4 py-3 border border-slate-300 dark:border-white/5 text-slate-600 dark:text-gray-400 hover:border-slate-400 hover:text-slate-900 bg-white dark:bg-transparent rounded-sm transition-all text-center" id="opt-garnish-berry">루비 아방가르드 (Berry Art)</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Price Estimate & CTA -->
-                    <div class="border-t border-slate-200 dark:border-white/10 pt-6 space-y-4">
+                    <div class="border-t border-slate-300 dark:border-white/10 pt-6 space-y-4">
                         <div class="flex justify-between items-center">
                             <span class="text-xs text-slate-500 dark:text-gray-400 tracking-wider">Estimated Total</span>
                             <span class="text-xl sm:text-2xl font-bold text-gold" id="cake-price">48,000 KRW</span>
                         </div>
-                        <button onclick="reserveCustomCake()" class="w-full py-4 bg-gold text-charcoal-deep font-bold text-xs uppercase tracking-widest hover:bg-gold-light transition-all duration-300 rounded-sm">
+                        <button onclick="reserveCustomCake()" class="w-full py-4 bg-gold text-charcoal-deep font-bold text-xs uppercase tracking-widest hover:bg-gold-light transition-all duration-300 rounded-sm shadow-md">
                             예약 및 상담 신청
                         </button>
                     </div>
                 </div>
 
-                <!-- Visual Showcase Canvas (Right) -->
-                <div class="lg:col-span-7 bg-slate-50 dark:bg-charcoal-deep border border-slate-200/60 dark:border-white/5 p-6 sm:p-12 flex flex-col items-center justify-center min-h-[350px] sm:min-h-[450px] relative rounded-sm">
+                <!-- Visual Showcase Canvas (Right) with high contrast border -->
+                <div class="lg:col-span-7 bg-slate-100 dark:bg-charcoal-deep border border-slate-300 dark:border-white/10 p-6 sm:p-12 flex flex-col items-center justify-center min-h-[350px] sm:min-h-[450px] relative rounded-sm shadow-inner">
                     <p class="absolute top-4 left-4 text-[10px] tracking-widest text-slate-400 dark:text-gray-500 uppercase font-mono">LIVE PREVIEW FRAME</p>
                     
                     <!-- Cake SVG Render Engine -->
                     <div class="w-full max-w-[280px] sm:max-w-[340px] aspect-square flex items-center justify-center relative">
                         <svg class="w-full h-full" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" id="custom-cake-svg">
                             <!-- Background Floor -->
-                            <ellipse cx="100" cy="150" rx="60" ry="15" class="fill-slate-200/50 dark:fill-[#161B25] stroke-slate-300 dark:stroke-[#374151]" stroke-width="0.7" opacity="0.4"/>
+                            <ellipse cx="100" cy="150" rx="60" ry="15" class="fill-slate-200/60 dark:fill-[#161B25] stroke-slate-400 dark:stroke-[#374151]" stroke-width="1" opacity="0.6"/>
                             
                             <!-- MAIN CAKE BODY (Sleek Isometric Style) -->
                             <g id="cake-body-render">
                                 <!-- Default is CUBE - Blanc -->
-                                <polygon points="100,70 145,90 100,110 55,90" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1" id="cake-svg-top"/>
-                                <polygon points="55,90 100,110 100,150 55,130" fill="#E2E8F0" stroke="#CCCCCC" stroke-width="1" id="cake-svg-left"/>
-                                <polygon points="100,110 145,90 145,130 100,150" fill="#CBD5E1" stroke="#CCCCCC" stroke-width="1" id="cake-svg-right"/>
+                                <polygon points="100,70 145,90 100,110 55,90" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="1.2" id="cake-svg-top"/>
+                                <polygon points="55,90 100,110 100,150 55,130" fill="#E2E8F0" stroke="#CCCCCC" stroke-width="1.2" id="cake-svg-left"/>
+                                <polygon points="100,110 145,90 145,130 100,150" fill="#CBD5E1" stroke="#CCCCCC" stroke-width="1.2" id="cake-svg-right"/>
                             </g>
 
                             <!-- GARNISH OVERLAY -->
                             <g id="cake-garnish-render">
-                                <path d="M100,85 L125,95 M100,110 L100,140 M70,115 L100,128" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" id="garnish-svg-main"/>
-                                <circle cx="100" cy="85" r="3" fill="#D4AF37" id="garnish-svg-dots-1"/>
-                                <circle cx="120" cy="115" r="2" fill="#D4AF37" id="garnish-svg-dots-2"/>
+                                <path d="M100,85 L125,95 M100,110 L100,140 M70,115 L100,128" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" id="garnish-svg-main"/>
+                                <circle cx="100" cy="85" r="3.5" fill="#D4AF37" id="garnish-svg-dots-1"/>
+                                <circle cx="120" cy="115" r="2.5" fill="#D4AF37" id="garnish-svg-dots-2"/>
                             </g>
                         </svg>
                     </div>
@@ -570,7 +571,7 @@
     </section>
 
     <!-- 5. Guestbook Section: 방명록 (Livre d'Or) -->
-    <section id="guestbook" class="py-20 sm:py-28 bg-slate-50 dark:bg-charcoal-deep relative overflow-hidden border-t border-slate-200/50 dark:border-white/5">
+    <section id="guestbook" class="py-20 sm:py-28 bg-slate-100 dark:bg-charcoal-deep relative overflow-hidden border-t border-slate-300 dark:border-white/5">
         <div class="absolute inset-0 glow-overlay pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-4 fade-in-element">
@@ -581,21 +582,21 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-                <!-- Guestbook Form -->
-                <div class="lg:col-span-5 bg-white dark:bg-charcoal border border-slate-200/60 dark:border-white/5 p-6 sm:p-8 rounded-sm shadow-sm fade-in-element">
+                <!-- Guestbook Form with strong input border contrast -->
+                <div class="lg:col-span-5 bg-white dark:bg-charcoal border border-slate-300 dark:border-white/10 p-6 sm:p-8 rounded-sm shadow-md fade-in-element">
                     <form id="guestbook-form" onsubmit="handleGuestbookSubmit(event)" class="space-y-6">
-                        <h3 class="text-base sm:text-lg font-bold text-slate-950 dark:text-white tracking-wider pb-3 border-b border-slate-100 dark:border-white/5">Write a Message</h3>
+                        <h3 class="text-base sm:text-lg font-bold text-slate-950 dark:text-white tracking-wider pb-3 border-b border-slate-200 dark:border-white/10">Write a Message</h3>
                         
                         <!-- Name Input -->
                         <div class="space-y-2">
                             <label for="visitor-name" class="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-gray-500 block">이름 / 닉네임</label>
-                            <input type="text" id="visitor-name" required maxlength="15" placeholder="성함 혹은 익명을 입력해주세요" class="w-full px-4 py-3 bg-slate-50 dark:bg-charcoal-deep border border-slate-200 dark:border-white/10 text-xs text-slate-950 dark:text-white rounded-sm focus:outline-none focus:border-gold transition-colors font-light">
+                            <input type="text" id="visitor-name" required maxlength="15" placeholder="성함 혹은 익명을 입력해주세요" class="w-full px-4 py-3 bg-slate-50 dark:bg-charcoal-deep border border-slate-300 dark:border-white/10 text-xs text-slate-950 dark:text-white rounded-sm focus:outline-none focus:border-gold transition-colors font-light">
                         </div>
 
                         <!-- Menu Pairing Select -->
                         <div class="space-y-2">
                             <label for="visitor-pairing" class="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-gray-500 block">오늘의 페어링 디저트</label>
-                            <select id="visitor-pairing" class="w-full px-4 py-3 bg-slate-50 dark:bg-charcoal-deep border border-slate-200 dark:border-white/10 text-xs text-slate-950 dark:text-white rounded-sm focus:outline-none focus:border-gold transition-colors font-light">
+                            <select id="visitor-pairing" class="w-full px-4 py-3 bg-slate-50 dark:bg-charcoal-deep border border-slate-300 dark:border-white/10 text-xs text-slate-950 dark:text-white rounded-sm focus:outline-none focus:border-gold transition-colors font-light">
                                 <option value="쥬메트릭 블랑">쥬메트릭 블랑 (Geometric Blanc)</option>
                                 <option value="누아르 골드 스페어">누아르 골드 스페어 (Noir Gold Sphère)</option>
                                 <option value="트라이앵글 프레즈">트라이앵글 프레즈 (Triangle Fraise)</option>
@@ -607,10 +608,10 @@
                         <!-- Message Input -->
                         <div class="space-y-2">
                             <label for="visitor-message" class="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-gray-500 block">메시지 (Message)</label>
-                            <textarea id="visitor-message" required maxlength="120" rows="3" placeholder="기분 좋은 발자취나 디저트 감상평을 한 줄 남겨주세요" class="w-full px-4 py-3 bg-slate-50 dark:bg-charcoal-deep border border-slate-200 dark:border-white/10 text-xs text-slate-950 dark:text-white rounded-sm focus:outline-none focus:border-gold transition-colors font-light resize-none"></textarea>
+                            <textarea id="visitor-message" required maxlength="120" rows="3" placeholder="기분 좋은 발자취나 디저트 감상평을 한 줄 남겨주세요" class="w-full px-4 py-3 bg-slate-50 dark:bg-charcoal-deep border border-slate-300 dark:border-white/10 text-xs text-slate-950 dark:text-white rounded-sm focus:outline-none focus:border-gold transition-colors font-light resize-none"></textarea>
                         </div>
 
-                        <button type="submit" class="w-full py-4 bg-slate-950 dark:bg-white text-white dark:text-charcoal-deep font-bold text-xs uppercase tracking-widest hover:bg-gold dark:hover:bg-gold dark:hover:text-charcoal-deep transition-all duration-300 rounded-sm">
+                        <button type="submit" class="w-full py-4 bg-slate-950 dark:bg-white text-white dark:text-charcoal-deep font-bold text-xs uppercase tracking-widest hover:bg-gold dark:hover:bg-gold dark:hover:text-charcoal-deep transition-all duration-300 rounded-sm shadow-md">
                             메시지 기록하기
                         </button>
                     </form>
@@ -631,13 +632,13 @@
     </section>
 
     <!-- 6. CTA & Location Section: 오시는 길 -->
-    <section id="location" class="py-20 sm:py-28 md:py-36 bg-white dark:bg-charcoal relative border-t border-slate-200/50 dark:border-white/5">
+    <section id="location" class="py-20 sm:py-28 md:py-36 bg-white dark:bg-charcoal relative border-t border-slate-300 dark:border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                 
                 <!-- Map / Action area -->
                 <div class="lg:col-span-7 space-y-4 order-2 lg:order-1 fade-in-element">
-                    <div class="relative w-full aspect-video bg-white dark:bg-charcoal-deep border border-slate-200 dark:border-white/5 rounded-sm overflow-hidden group shadow-2xl">
+                    <div class="relative w-full aspect-video bg-white dark:bg-charcoal-deep border border-slate-300 dark:border-white/10 rounded-sm overflow-hidden group shadow-2xl">
                         <!-- 가상의 지도 및 위치 안내용 SVG 인포그래픽 -->
                         <svg class="w-full h-full" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect width="600" height="400" class="fill-slate-100 dark:fill-[#0A0D14]"/>
@@ -648,16 +649,16 @@
                             <line x1="450" y1="0" x2="450" y2="400" class="stroke-slate-300 dark:stroke-[#1F2937]" stroke-width="8"/>
                             
                             <!-- 서브 스트리트 -->
-                            <line x1="0" y1="210" x2="600" y2="210" class="stroke-slate-200 dark:stroke-[#161B25]" stroke-width="2"/>
-                            <line x1="320" y1="0" x2="320" y2="400" class="stroke-slate-200 dark:stroke-[#161B25]" stroke-width="2"/>
+                            <line x1="0" y1="210" x2="600" y2="210" class="stroke-slate-200 dark:stroke-[#161B25]" stroke-width="2.5"/>
+                            <line x1="320" y1="0" x2="320" y2="400" class="stroke-slate-200 dark:stroke-[#161B25]" stroke-width="2.5"/>
 
                             <!-- 강 또는 파크 영역 -->
-                            <rect x="0" y="0" width="110" height="400" class="fill-emerald-800/5 dark:fill-[rgba(212,175,55,0.03)]"/>
-                            <text x="35" y="200" class="fill-slate-400 dark:fill-[#4B5563]" font-size="10" font-family="Montserrat" letter-spacing="3" transform="rotate(-90 35 200)">SEOUL FOREST</text>
+                            <rect x="0" y="0" width="110" height="400" class="fill-emerald-800/10 dark:fill-[rgba(212,175,55,0.03)]"/>
+                            <text x="35" y="200" class="fill-slate-500 dark:fill-[#4B5563] font-bold" font-size="10" font-family="Montserrat" letter-spacing="3" transform="rotate(-90 35 200)">SEOUL FOREST</text>
 
                             <!-- 매장 위치 하이라이트 핀 -->
                             <g transform="translate(320, 140)" class="cursor-pointer">
-                                <circle cx="0" cy="0" r="16" fill="rgba(212, 175, 55, 0.15)">
+                                <circle cx="0" cy="0" r="16" fill="rgba(212, 175, 55, 0.25)">
                                     <animate attributeName="r" values="8;24;8" dur="3s" repeatCount="indefinite" />
                                 </circle>
                                 <circle cx="0" cy="0" r="7" fill="#D4AF37"/>
@@ -666,12 +667,12 @@
                             
                             <!-- 텍스트 이정표 -->
                             <text x="335" y="125" class="fill-slate-900 dark:fill-[#F8FAFC]" font-size="12" font-family="Noto Sans KR" font-weight="bold">시크 아틀리에 (CHIC ATELIER)</text>
-                            <text x="335" y="158" class="fill-slate-500 dark:fill-[#9CA3AF]" font-size="9" font-family="Noto Sans KR">뚝섬역 5번출구 도보 3분</text>
+                            <text x="335" y="158" class="fill-slate-600 dark:fill-[#9CA3AF]" font-size="9" font-family="Noto Sans KR">뚝섬역 5번출구 도보 3분</text>
                         </svg>
                         
                         <!-- Map Control Hover Overlay -->
                         <div class="absolute inset-0 bg-slate-900/40 dark:bg-charcoal-deep/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <button onclick="showCustomAlert()" class="px-6 py-3.5 bg-white text-charcoal-deep font-bold text-[10px] tracking-widest uppercase hover:bg-gold transition-colors duration-300 rounded-sm">
+                            <button onclick="showCustomAlert()" class="px-6 py-3.5 bg-white text-charcoal-deep font-bold text-[10px] tracking-widest uppercase hover:bg-gold transition-colors duration-300 rounded-sm shadow-md">
                                 Naver 지도 연결하기
                             </button>
                         </div>
@@ -692,7 +693,7 @@
                     </p>
 
                     <!-- Route Guide Tabs -->
-                    <div class="border-t border-slate-200 dark:border-white/10 pt-6 space-y-4">
+                    <div class="border-t border-slate-300 dark:border-white/10 pt-6 space-y-4">
                         <div class="flex gap-4 border-b border-slate-200 dark:border-white/5 pb-2">
                             <button onclick="switchRouteTab('subway')" class="route-tab active text-xs font-bold text-gold tracking-wider pb-1 relative" id="route-tab-subway">
                                 대중교통 이용시
@@ -705,32 +706,32 @@
                         </div>
 
                         <!-- Tab Contents -->
-                        <div class="text-[11px] sm:text-xs text-slate-500 dark:text-gray-400 space-y-3" id="route-desc-container">
+                        <div class="text-[11px] sm:text-xs text-slate-600 dark:text-gray-400 space-y-3" id="route-desc-container">
                             <div id="route-subway-content">
                                 <p class="leading-relaxed">
-                                    <strong class="text-slate-900 dark:text-white font-semibold">지하철 2호선 뚝섬역 5번 출구</strong>에서 나온 뒤, 우측 골목을 따라 약 250m 직진하세요. CHIC 그레이 빌딩 1층에 자리 잡고 있어 도보 약 3분 거리에 있습니다.
+                                    <strong class="text-slate-900 dark:text-white font-bold">지하철 2호선 뚝섬역 5번 출구</strong>에서 나온 뒤, 우측 골목을 따라 약 250m 직진하세요. CHIC 그레이 빌딩 1층에 자리 잡고 있어 도보 약 3분 거리에 있습니다.
                                 </p>
                             </div>
                             <div id="route-car-content" class="hidden">
                                 <p class="leading-relaxed">
-                                    성수동 CHIC 빌딩 지하 전용 주차장을 이용해 주세요. 구매 고객에 한하여 <strong class="text-slate-900 dark:text-white font-semibold">무료 주차 2시간</strong>을 제공해 드립니다. 주차 공간이 협소할 경우 발렛 파킹 서비스도 지원됩니다.
+                                    성수동 CHIC 빌딩 지하 전용 주차장을 이용해 주세요. 구매 고객에 한하여 <strong class="text-slate-900 dark:text-white font-bold">무료 주차 2시간</strong>을 제공해 드립니다. 주차 공간이 협소할 경우 발렛 파킹 서비스도 지원됩니다.
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Store Meta Infos -->
-                    <div class="space-y-3.5 pt-4 border-t border-slate-200 dark:border-white/10 text-[11px] sm:text-xs text-slate-500 dark:text-gray-400">
+                    <!-- Store Meta Infos with boosted color weight -->
+                    <div class="space-y-3.5 pt-4 border-t border-slate-300 dark:border-white/10 text-[11px] sm:text-xs text-slate-700 dark:text-gray-400">
                         <div class="flex items-start gap-4">
-                            <span class="font-bold text-slate-800 dark:text-white uppercase w-16 tracking-widest text-[10px]">ADDRESS</span>
+                            <span class="font-bold text-slate-950 dark:text-white uppercase w-16 tracking-widest text-[10px]">ADDRESS</span>
                             <span class="font-light">서울시 성동구 성수이로 11길 5 (CHIC 빌딩 1F)</span>
                         </div>
                         <div class="flex items-start gap-4">
-                            <span class="font-bold text-slate-800 dark:text-white uppercase w-16 tracking-widest text-[10px]">OPEN</span>
+                            <span class="font-bold text-slate-950 dark:text-white uppercase w-16 tracking-widest text-[10px]">OPEN</span>
                             <span class="font-light">Daily 11:30 - 21:30 (Last Order 21:00)</span>
                         </div>
                         <div class="flex items-start gap-4">
-                            <span class="font-bold text-slate-800 dark:text-white uppercase w-16 tracking-widest text-[10px]">CONTACT</span>
+                            <span class="font-bold text-slate-950 dark:text-white uppercase w-16 tracking-widest text-[10px]">CONTACT</span>
                             <span class="font-light">02. 1234. 5678 | hello@chicatelier.com</span>
                         </div>
                     </div>
@@ -742,7 +743,7 @@
 
     <!-- Detail view Modal -->
     <div id="detail-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="bg-white dark:bg-charcoal border border-slate-200 dark:border-white/10 p-6 sm:p-8 max-w-lg w-full mx-4 text-left space-y-6 relative rounded-sm">
+        <div class="bg-white dark:bg-charcoal border border-slate-300 dark:border-white/10 p-6 sm:p-8 max-w-lg w-full mx-4 text-left space-y-6 relative rounded-sm shadow-2xl">
             <button onclick="closeDetailModal()" class="absolute top-4 right-4 text-slate-500 dark:text-gray-400 hover:text-slate-950 dark:hover:text-white" aria-label="닫기">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
@@ -758,7 +759,7 @@
                 디저트에 대한 고급 설명 플레이스홀더입니다.
             </p>
 
-            <div class="grid grid-cols-2 gap-4 text-xs pt-4 border-t border-slate-100 dark:border-white/5">
+            <div class="grid grid-cols-2 gap-4 text-xs pt-4 border-t border-slate-200 dark:border-white/5">
                 <div class="space-y-1">
                     <span class="text-[9px] font-bold text-slate-400 dark:text-gray-500 uppercase tracking-widest block">Main Ingredients</span>
                     <p class="text-slate-800 dark:text-gray-300 font-light" id="modal-ingredients">재료 목록</p>
@@ -779,7 +780,7 @@
 
     <!-- Custom Modal/Alert Box instead of browser alert() -->
     <div id="custom-alert" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="bg-white dark:bg-charcoal border border-slate-200 dark:border-white/10 p-6 sm:p-8 max-w-sm w-full mx-6 text-center space-y-6 rounded-sm">
+        <div class="bg-white dark:bg-charcoal border border-slate-300 dark:border-white/10 p-6 sm:p-8 max-w-sm w-full mx-6 text-center space-y-6 rounded-sm shadow-2xl">
             <h3 class="text-base sm:text-lg font-bold text-gold tracking-widest uppercase">지도 연결 안내</h3>
             <p class="text-xs sm:text-sm text-slate-600 dark:text-gray-400 leading-relaxed font-light">
                 실제 지도 정보 및 네이버 지도 링크 연결이 차단된 포트폴리오 안전 시뮬레이션 환경입니다.<br class="hidden sm:block">
@@ -796,22 +797,22 @@
 
     <!-- Secret Minigame Modal -->
     <div id="secret-game-modal" class="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="bg-white dark:bg-charcoal border border-slate-200 dark:border-gold/30 p-6 sm:p-8 max-w-lg w-full mx-4 text-center space-y-6 relative rounded-sm shadow-[0_0_50px_rgba(212,175,55,0.12)]">
+        <div class="bg-white dark:bg-charcoal border border-slate-300 dark:border-gold/30 p-6 sm:p-8 max-w-lg w-full mx-4 text-center space-y-6 relative rounded-sm shadow-[0_0_50px_rgba(212,175,55,0.12)]">
             <!-- Close Button -->
-            <button onclick="closeSecretGame()" class="absolute top-4 right-4 text-slate-400 dark:text-gray-500 hover:text-slate-950 dark:hover:text-white transition-colors" aria-label="게임 닫기">
+            <button onclick="closeSecretGame()" class="absolute top-4 right-4 text-slate-450 dark:text-gray-500 hover:text-slate-950 dark:hover:text-white transition-colors animate-pulse" aria-label="게임 닫기">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
 
             <div class="space-y-1">
-                <span class="text-[9px] font-bold uppercase tracking-[0.4em] text-gold animate-pulse">SECRET LABORATORY</span>
+                <span class="text-[9px] font-bold uppercase tracking-[0.4em] text-gold animate-ping">SECRET LABORATORY</span>
                 <h3 class="text-lg sm:text-xl font-bold text-slate-950 dark:text-white tracking-wide" id="game-modal-title">골드 포일 캐처 (Gold Foil Catcher)</h3>
                 <p class="text-[11px] text-slate-500 dark:text-gray-400 font-light" id="game-modal-desc">하늘에서 떨어지는 황금박(✦)과 라즈베리(🍓)를 골드 접시에 가득 담아보세요!</p>
             </div>
 
-            <!-- Game Mode Status Display (No switcher tabs anymore, enters directly via separate hidden buttons) -->
-            <div class="flex justify-center gap-3 border-b border-slate-100 dark:border-white/5 pb-3 text-[10px] sm:text-xs font-bold uppercase tracking-wider">
+            <!-- Game Mode Status Display -->
+            <div class="flex justify-center gap-3 border-b border-slate-200 dark:border-white/5 pb-3 text-[10px] sm:text-xs font-bold uppercase tracking-wider">
                 <span id="mode-badge-catcher" class="game-mode-btn pb-1 px-2 border-b-2 transition-all">
                     Foil Catcher ✦
                 </span>
@@ -821,13 +822,13 @@
             </div>
 
             <!-- Game Info Panel -->
-            <div class="flex justify-between items-center px-4 py-2.5 bg-slate-50 dark:bg-charcoal-deep border border-slate-200 dark:border-white/5 rounded-sm text-xs font-mono">
+            <div class="flex justify-between items-center px-4 py-2.5 bg-slate-50 dark:bg-charcoal-deep border border-slate-300 dark:border-white/5 rounded-sm text-xs font-mono">
                 <div class="text-slate-600 dark:text-gray-400">SCORE: <span id="game-score" class="text-gold font-bold">0</span> <span id="score-target">/ 100</span></div>
                 <div class="text-slate-600 dark:text-gray-400">LIVES: <span id="game-lives" class="text-rose-500 font-bold">❤❤❤</span></div>
             </div>
 
             <!-- Game Area Frame -->
-            <div class="relative w-full aspect-[4/3] bg-slate-100 dark:bg-charcoal-deep border border-slate-200 dark:border-gold/10 rounded-sm overflow-hidden" id="canvas-container">
+            <div class="relative w-full aspect-[4/3] bg-slate-200 dark:bg-charcoal-deep border border-slate-350 dark:border-gold/10 rounded-sm overflow-hidden" id="canvas-container">
                 <canvas id="game-canvas" class="w-full h-full block"></canvas>
                 
                 <!-- Play / Game Over Screen Overlay -->
@@ -865,14 +866,14 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-slate-100 dark:bg-charcoal-deep border-t border-slate-200 dark:border-white/5 py-16 text-center text-xs text-slate-400 dark:text-gray-600">
+    <footer class="bg-slate-200 dark:bg-charcoal-deep border-t border-slate-300 dark:border-white/5 py-16 text-center text-xs text-slate-500 dark:text-gray-600">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 space-y-6">
             <p class="font-extrabold text-sm sm:text-base tracking-[0.3em] text-slate-950 dark:text-white">CHIC ATELIER</p>
-            <p class="font-light tracking-wide max-w-md mx-auto text-slate-500 dark:text-gray-500 leading-relaxed px-2 text-[11px] sm:text-xs">
+            <p class="font-light tracking-wide max-w-md mx-auto text-slate-600 dark:text-gray-500 leading-relaxed px-2 text-[11px] sm:text-xs">
                 "디저트, 일상의 가장 완벽한 한 조각"<br>
                 © 2026 CHIC Atelier de Dessert. All Rights Reserved.
             </p>
-            <div class="flex justify-center gap-4 sm:gap-6 text-[10px] sm:text-xs text-slate-400 dark:text-gray-500 font-medium">
+            <div class="flex justify-center gap-4 sm:gap-6 text-[10px] sm:text-xs text-slate-500 dark:text-gray-500 font-semibold">
                 <a href="#" class="hover:text-slate-950 dark:hover:text-white transition-colors duration-300">이용약관</a>
                 <span>|</span>
                 <a href="#" class="hover:text-slate-950 dark:hover:text-white transition-colors duration-300">개인정보처리방침</a>
@@ -932,10 +933,10 @@
         window.addEventListener('scroll', () => {
             if (window.scrollY > 30) {
                 header.classList.add('bg-white/95', 'dark:bg-charcoal-deep/95', 'shadow-2xl', 'py-1');
-                header.classList.remove('bg-white/80', 'dark:bg-charcoal-deep/80');
+                header.classList.remove('bg-white/90', 'dark:bg-charcoal-deep/80');
             } else {
                 header.classList.remove('bg-white/95', 'dark:bg-charcoal-deep/95', 'shadow-2xl', 'py-1');
-                header.classList.add('bg-white/80', 'dark:bg-charcoal-deep/80');
+                header.classList.add('bg-white/90', 'dark:bg-charcoal-deep/80');
             }
         });
 
@@ -985,13 +986,13 @@
             // Update Tab UI
             document.querySelectorAll('.menu-tab-btn').forEach(btn => {
                 btn.classList.remove('active', 'border-gold', 'text-gold');
-                btn.classList.add('border-slate-200', 'dark:border-white/10', 'text-slate-500', 'dark:text-gray-400');
+                btn.classList.add('border-slate-300', 'dark:border-white/10', 'text-slate-600', 'dark:text-gray-400');
             });
 
             const currentTab = document.getElementById(`tab-${category}`);
             if (currentTab) {
                 currentTab.classList.add('active', 'border-gold', 'text-gold');
-                currentTab.classList.remove('border-slate-200', 'dark:border-white/10', 'text-slate-500', 'dark:text-gray-400');
+                currentTab.classList.remove('border-slate-300', 'dark:border-white/10', 'text-slate-600', 'dark:text-gray-400');
             }
 
             // Cards transition out and filter
@@ -1033,13 +1034,13 @@
             // UI Button Active classes sync
             document.querySelectorAll(`[id^="opt-${key}-"]`).forEach(btn => {
                 btn.classList.remove('active', 'border-gold', 'text-gold');
-                btn.classList.add('border-slate-200', 'dark:border-white/5', 'text-slate-600', 'dark:text-gray-400');
+                btn.classList.add('border-slate-300', 'dark:border-white/5', 'text-slate-600', 'dark:text-gray-400');
             });
 
             const selectedBtn = document.getElementById(`opt-${key}-${value}`);
             if (selectedBtn) {
                 selectedBtn.classList.add('active', 'border-gold', 'text-gold');
-                selectedBtn.classList.remove('border-slate-200', 'dark:border-white/5', 'text-slate-600', 'dark:text-gray-400');
+                selectedBtn.classList.remove('border-slate-300', 'dark:border-white/5', 'text-slate-600', 'dark:text-gray-400');
             }
 
             // Redraw Visualizer SVG
@@ -1058,7 +1059,7 @@
             let topColor = '#FFFFFF';
             let leftColor = '#E2E8F0';
             let rightColor = '#CBD5E1';
-            let strokeColor = isDark ? '#CCCCCC' : '#B0B0B0';
+            let strokeColor = isDark ? '#CCCCCC' : '#888888'; // Stronger borders for light mode
 
             if (cakeState.cream === 'matcha') {
                 topColor = '#4D7C0F';
@@ -1073,16 +1074,16 @@
             // Build dynamic SVGs on demand
             if (cakeState.shape === 'cube') {
                 renderGroup.innerHTML = `
-                    <polygon points="100,70 145,90 100,110 55,90" fill="${topColor}" stroke="${strokeColor}" stroke-width="1"/>
-                    <polygon points="55,90 100,110 100,150 55,130" fill="${leftColor}" stroke="${strokeColor}" stroke-width="1"/>
-                    <polygon points="100,110 145,90 145,130 100,150" fill="${rightColor}" stroke="${strokeColor}" stroke-width="1"/>
+                    <polygon points="100,70 145,90 100,110 55,90" fill="${topColor}" stroke="${strokeColor}" stroke-width="1.5"/>
+                    <polygon points="55,90 100,110 100,150 55,130" fill="${leftColor}" stroke="${strokeColor}" stroke-width="1.5"/>
+                    <polygon points="100,110 145,90 145,130 100,150" fill="${rightColor}" stroke="${strokeColor}" stroke-width="1.5"/>
                 `;
                 cakeTitle = cakeState.cream === 'blanc' ? "CUBE BLANC" : "CUBE MATCHA";
             } else { // cylinder
                 renderGroup.innerHTML = `
-                    <ellipse cx="100" cy="90" rx="45" ry="18" fill="${topColor}" stroke="${strokeColor}" stroke-width="1"/>
-                    <path d="M 55,90 A 45,18 0 0,0 145,90 L 145,135 A 45,18 0 0,1 55,135 Z" fill="${rightColor}" stroke="${strokeColor}" stroke-width="1"/>
-                    <path d="M 55,90 A 45,18 0 0,0 100,108 L 100,153 A 45,18 0 0,1 55,135 Z" fill="${leftColor}" stroke="${strokeColor}" stroke-width="0.3"/>
+                    <ellipse cx="100" cy="90" rx="45" ry="18" fill="${topColor}" stroke="${strokeColor}" stroke-width="1.5"/>
+                    <path d="M 55,90 A 45,18 0 0,0 145,90 L 145,135 A 45,18 0 0,1 55,135 Z" fill="${rightColor}" stroke="${strokeColor}" stroke-width="1.5"/>
+                    <path d="M 55,90 A 45,18 0 0,0 100,108 L 100,153 A 45,18 0 0,1 55,135 Z" fill="${leftColor}" stroke="${strokeColor}" stroke-width="0.5"/>
                 `;
                 cakeTitle = cakeState.cream === 'blanc' ? "CYLINDER BLANC" : "CYLINDER MATCHA";
             }
@@ -1090,17 +1091,17 @@
             // Garnish render logic
             if (cakeState.garnish === 'gold') {
                 garnishGroup.innerHTML = `
-                    <path d="M100,85 L125,95 M100,110 L100,140 M70,115 L100,128" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
-                    <circle cx="100" cy="85" r="3" fill="#D4AF37" />
-                    <circle cx="120" cy="115" r="2" fill="#D4AF37" />
+                    <path d="M100,85 L125,95 M100,110 L100,140 M70,115 L100,128" stroke="#D4AF37" stroke-width="3.5" stroke-linecap="round"/>
+                    <circle cx="100" cy="85" r="3.5" fill="#D4AF37" />
+                    <circle cx="120" cy="115" r="2.5" fill="#D4AF37" />
                 `;
                 cakeDesc = "Architectural Structure (Minimalist Gold Foil Edition)";
             } else { // berry
                 garnishGroup.innerHTML = `
-                    <circle cx="100" cy="85" r="5" fill="#DC2626" />
-                    <circle cx="112" cy="90" r="4" fill="#991B1B" />
-                    <circle cx="92" cy="88" r="4" fill="#F43F5E" />
-                    <path d="M100,80 Q105,70 115,74" stroke="#DC2626" stroke-width="1" fill="none" />
+                    <circle cx="100" cy="85" r="5.5" fill="#DC2626" />
+                    <circle cx="112" cy="90" r="4.5" fill="#991B1B" />
+                    <circle cx="92" cy="88" r="4.5" fill="#F43F5E" />
+                    <path d="M100,80 Q105,70 115,74" stroke="#DC2626" stroke-width="1.5" fill="none" />
                 `;
                 cakeDesc = "Surrealist Fruit Accent (Ruby Red Berry Edition)";
             }
@@ -1140,7 +1141,7 @@
         function showToast(message) {
             const container = document.getElementById('toast-container');
             const toast = document.createElement('div');
-            toast.className = "bg-white dark:bg-charcoal border border-slate-200 dark:border-gold/40 text-slate-900 dark:text-softwhite text-xs px-5 py-4 shadow-2xl transition-all duration-500 transform translate-y-4 opacity-0 flex items-center gap-3 rounded-sm pointer-events-auto max-w-sm";
+            toast.className = "bg-white dark:bg-charcoal border border-slate-350 dark:border-gold/40 text-slate-900 dark:text-softwhite text-xs px-5 py-4 shadow-2xl transition-all duration-500 transform translate-y-4 opacity-0 flex items-center gap-3 rounded-sm pointer-events-auto max-w-sm";
             toast.innerHTML = `
                 <div class="w-2 h-2 rounded-full bg-gold animate-ping"></div>
                 <div class="flex-1 font-light leading-relaxed">${message}</div>
@@ -1252,6 +1253,7 @@
             renderGuestbook();
         }
 
+        // Render guestbook notes with strong border layouts for light mode
         function renderGuestbook() {
             const container = document.getElementById('guestbook-list-container');
             const counter = document.getElementById('guestbook-counter');
@@ -1262,7 +1264,7 @@
 
             if (guestbookEntries.length === 0) {
                 container.innerHTML = `
-                    <div class="text-center py-12 bg-white dark:bg-charcoal border border-slate-200/50 dark:border-white/5 rounded-sm">
+                    <div class="text-center py-12 bg-white dark:bg-charcoal border border-slate-300 dark:border-white/5 rounded-sm shadow-sm">
                         <p class="text-xs text-slate-400 dark:text-gray-500 font-light">작성된 방명록이 없습니다. 첫 발자취를 남겨보세요.</p>
                     </div>
                 `;
@@ -1270,21 +1272,21 @@
             }
 
             container.innerHTML = guestbookEntries.map((entry, index) => `
-                <div class="bg-white dark:bg-charcoal border border-slate-200/50 dark:border-white/5 p-5 flex flex-col justify-between relative rounded-sm shadow-sm hover:border-gold/30 dark:hover:border-gold/30 transition-all duration-300">
+                <div class="bg-white dark:bg-charcoal border border-slate-300 dark:border-white/10 p-5 flex flex-col justify-between relative rounded-sm shadow-sm hover:border-gold/50 dark:hover:border-gold/30 transition-all duration-300">
                     <div class="space-y-3">
                         <div class="flex justify-between items-start">
                             <div>
                                 <span class="text-xs font-bold text-slate-900 dark:text-white">${escapeHtml(entry.name)}</span>
-                                <span class="text-[9px] uppercase tracking-widest text-gold bg-gold/10 px-2 py-0.5 ml-2 rounded">${escapeHtml(entry.pairing)}</span>
+                                <span class="text-[9px] uppercase tracking-widest text-gold bg-gold/10 px-2 py-0.5 ml-2 rounded border border-gold/20">${escapeHtml(entry.pairing)}</span>
                             </div>
                             <button onclick="deleteGuestbookEntry(${index})" class="text-slate-400 dark:text-gray-600 hover:text-red-500 dark:hover:text-red-400 p-1 text-xs transition-colors" title="삭제">
                                 <i class="fa-solid fa-xmark"></i>
                             </button>
                         </div>
-                        <p class="text-xs text-slate-600 dark:text-gray-400 font-light leading-relaxed whitespace-pre-line">${escapeHtml(entry.message)}</p>
+                        <p class="text-xs text-slate-700 dark:text-gray-400 font-light leading-relaxed whitespace-pre-line">${escapeHtml(entry.message)}</p>
                     </div>
                     
-                    <div class="flex justify-between items-center pt-4 mt-3 border-t border-slate-100 dark:border-white/5 text-[10px] text-slate-400 dark:text-gray-500">
+                    <div class="flex justify-between items-center pt-4 mt-3 border-t border-slate-200 dark:border-white/5 text-[10px] text-slate-400 dark:text-gray-500">
                         <span>${entry.date || '2026.07.13'}</span>
                         <button onclick="likeGuestbookEntry(${index})" class="flex items-center gap-1.5 hover:text-rose-500 transition-colors py-1 px-2 hover:bg-rose-500/5 rounded">
                             <i class="fa-regular fa-heart text-rose-500"></i>
@@ -1366,19 +1368,19 @@
         // Game Selection State
         let currentGameMode = 'catcher';
 
-        // Sweet Jumper (Endless Jumper) Specific States (Tuned physics values for high-speed responsiveness)
+        // Sweet Jumper (Endless Jumper) Specific States (High-speed jump physics tuning)
         let jumperPlayer = { 
             x: 50, 
             y: 0, 
             vy: 0, 
             radius: 12, 
-            gravity: 0.85,       /* Speeded up gravity for fast descent */
-            jumpForce: -13.5,    /* Speeded up jump lift force for snappiness */
+            gravity: 0.85,       /* Snappy descent */
+            jumpForce: -13.5,    /* Elevated launch factor */
             jumpCount: 0 
         };
         let jumperObstacles = [];
         let jumperFrameCount = 0;
-        let jumperSpeed = 4.5;   /* Speeded up baseline speed for dynamic flow */
+        let jumperSpeed = 4.5;   /* High baseline tempo */
         let invulnerabilityFrames = 0;
 
         function openSecretGame(mode = 'catcher') {
@@ -1449,8 +1451,8 @@
                 document.getElementById('score-target').textContent = "/ 100";
                 
                 document.getElementById('mobile-control-panel').innerHTML = `
-                    <button id="btn-left" class="flex-1 py-3.5 bg-slate-100 dark:bg-white/5 active:bg-gold/20 border border-slate-200 dark:border-white/10 text-slate-950 dark:text-white rounded-sm text-center select-none text-sm transition-colors">◀ LEFT</button>
-                    <button id="btn-right" class="flex-1 py-3.5 bg-slate-100 dark:bg-white/5 active:bg-gold/20 border border-slate-200 dark:border-white/10 text-slate-950 dark:text-white rounded-sm text-center select-none text-sm transition-colors">RIGHT ▶</button>
+                    <button id="btn-left" class="flex-1 py-3.5 bg-white dark:bg-white/5 active:bg-gold/20 border border-slate-300 dark:border-white/10 text-slate-950 dark:text-white rounded-sm text-center select-none text-sm font-bold shadow-sm transition-colors">◀ LEFT</button>
+                    <button id="btn-right" class="flex-1 py-3.5 bg-white dark:bg-white/5 active:bg-gold/20 border border-slate-300 dark:border-white/10 text-slate-950 dark:text-white rounded-sm text-center select-none text-sm font-bold shadow-sm transition-colors">RIGHT ▶</button>
                 `;
                 bindCatcherControls();
             } else {
@@ -1464,7 +1466,7 @@
                 document.getElementById('score-target').textContent = "(무한 모드)";
                 
                 document.getElementById('mobile-control-panel').innerHTML = `
-                    <button id="btn-jump" class="flex-1 py-4 bg-slate-100 dark:bg-white/5 active:bg-gold/20 border border-slate-200 dark:border-white/10 text-slate-950 dark:text-white rounded-sm text-center select-none text-sm font-bold tracking-widest transition-colors">▲ HIGH SPEED JUMP (DOUBLE JUMP)</button>
+                    <button id="btn-jump" class="flex-1 py-4 bg-white dark:bg-white/5 active:bg-gold/20 border border-slate-300 dark:border-white/10 text-slate-950 dark:text-white rounded-sm text-center select-none text-sm font-bold tracking-widest shadow-sm transition-colors">▲ HIGH SPEED JUMP (DOUBLE JUMP)</button>
                 `;
                 bindJumperControls();
             }
@@ -1523,7 +1525,7 @@
                     { char: '✦', color: '#D4AF37', points: 10, isBad: false }, 
                     { char: '🍓', color: '#E11D48', points: 15, isBad: false }, 
                     { char: '🍃', color: '#16A34A', points: 5, isBad: false },  
-                    { char: '🌑', color: isDark ? '#9CA3AF' : '#1F2937', points: 0, isBad: true } 
+                    { char: '🌑', color: isDark ? '#9CA3AF' : '#475569', points: 0, isBad: true } 
                 ];
                 const selectedType = types[Math.floor(Math.random() * types.length)];
                 fallingItems.push({
@@ -1564,7 +1566,7 @@
                 item.y += item.speed;
 
                 ctx.fillStyle = item.color;
-                ctx.font = '16px "Montserrat", sans-serif';
+                ctx.font = 'bold 16px "Montserrat", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.fillText(item.char, item.x, item.y);
 
@@ -1605,12 +1607,12 @@
         function jumperLoop() {
             if (!isPlaying || !ctx || !canvas || currentGameMode !== 'jumper') return;
 
-            // 성공해서 점수(달린 거리)가 오를수록 장애물 다가오는 속도와 마카롱의 점프 공전 궤도를 극적으로 단축시킵니다.
+            // 물리 가중치 동적 가변 조율
             const baseSpeed = 4.5;
             const baseGravity = 0.85;
             const baseJumpForce = -13.5;
 
-            // 실시간 가속 수식 매핑 (점수당 속도 0.05 증가, 중력 0.005 증가, 도약 탄성 점진 상승)
+            // 실시간 가속 수식 매핑 (스릴 있는 게임플레이 연출)
             jumperSpeed = baseSpeed + (score * 0.05);
             jumperPlayer.gravity = baseGravity + (score * 0.005);
             jumperPlayer.jumpForce = baseJumpForce - (score * 0.04);
@@ -1646,8 +1648,7 @@
                 updateGameUI();
             }
 
-            // Spawn sweet obstacles randomly
-            // 속도 가속에 비례해 장애물 생성 간격을 최적화하여 회피가 가능한 레벨 디자인 유지
+            // Spawn sweet obstacles randomly with adaptive speed logic
             const spawnInterval = Math.max(45, 85 - Math.floor(score * 0.25));
             if (jumperObstacles.length === 0 || (jumperFrameCount % spawnInterval === 0 && Math.random() < 0.6)) {
                 const obsTypes = [
@@ -1668,7 +1669,7 @@
                 drawMacaron(ctx, jumperPlayer.x, jumperPlayer.y);
             }
 
-            // Draw obstacles and handle collision
+            // Draw obstacles and handle collision (No early termination at 100 points, play until lives empty)
             for (let i = jumperObstacles.length - 1; i >= 0; i--) {
                 const obs = jumperObstacles[i];
                 obs.x -= jumperSpeed;
@@ -1695,7 +1696,6 @@
                         updateGameUI();
                         
                         if (lives <= 0) {
-                            // 죽었을 때 점수가 100점 이상 달성되었다면 성공 리워드를 보여주고, 아니면 게임오버 처리
                             if (score >= 100) {
                                 handleGameWin();
                             } else {
@@ -1734,7 +1734,7 @@
         }
 
         function drawCoffeeCup(ctx, x, y, w, h) {
-            ctx.fillStyle = '#78350F'; // Coffee Brown Cup
+            ctx.fillStyle = '#78350F'; // Coffee cup
             ctx.beginPath();
             ctx.moveTo(x, y);
             ctx.lineTo(x + w, y);
@@ -1744,31 +1744,31 @@
             ctx.fill();
             // Cup Handle
             ctx.strokeStyle = '#78350F';
-            ctx.lineWidth = 2;
+            ctx.lineWidth = 2.5;
             ctx.beginPath();
             ctx.arc(x + w * 0.85, y + h * 0.4, w * 0.25, -Math.PI/2, Math.PI/2);
             ctx.stroke();
         }
 
         function drawCakeSlice(ctx, x, y, w, h) {
-            ctx.fillStyle = '#FEF08A'; // Yellow sponge layers
+            ctx.fillStyle = '#FEF08A'; // Yellow sponge
             ctx.beginPath();
             ctx.moveTo(x, y + h);
             ctx.lineTo(x + w, y + h);
             ctx.lineTo(x + w, y);
             ctx.closePath();
             ctx.fill();
-            // Red strawberry on top
+            // Strawberry on top
             ctx.fillStyle = '#EF4444';
             ctx.beginPath();
-            ctx.arc(x + w * 0.85, y + 2, 4, 0, Math.PI*2);
+            ctx.arc(x + w * 0.85, y + 2, 4.5, 0, Math.PI*2);
             ctx.fill();
         }
 
         function drawRollingPin(ctx, x, y, w, h) {
-            ctx.fillStyle = '#D97706'; // Wooden amber
+            ctx.fillStyle = '#D97706'; // Wooden stick
             ctx.fillRect(x, y + h * 0.25, w, h * 0.5); 
-            ctx.fillStyle = '#F59E0B'; // Wooden handle tips
+            ctx.fillStyle = '#F59E0B'; // Wooden tips
             ctx.fillRect(x - 4, y + h * 0.35, 4, h * 0.3);
             ctx.fillRect(x + w, y + h * 0.35, 4, h * 0.3);
         }
